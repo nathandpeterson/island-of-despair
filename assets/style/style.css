@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.status-bar .badge {
+  background: green;
+}
+
+.discover-row, .action-row {
+  display: flex;
+  justify-content: center;
+}
+
+.discover, .action {
+  height: 15rem;
+  width: 15rem;
+  margin: 5%;
+  border: 1px gray solid;
+  border-radius: 5%;
+  background: gray;
+}
