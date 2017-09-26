@@ -28,11 +28,11 @@ function islandTimer(){
     let years = Math.floor(milliseconds/300000)
     let date;
     if (years > 0){
-      date = `${years} years ${months} months ${days} days and you are feeling `
+      date = `${years} years ${months} months ${days} days `
     } else if (months > 0 ) {
-      date = `${months} months ${days} days and you are feeling `
+      date = `${months} months ${days} days `
     } else {
-      date = `${days} days and you are feeling `
+      date = `${days} days `
     }
     return date
   }
@@ -70,16 +70,21 @@ function healthTime(){
   }
 
   if (health >= 30){
-    statusDisplay.textContent = " healthy"
+    statusDisplay.textContent = " feeling healthy."
   } else if
-    (health < 30 ){
-      statusDisplay.textContent = " hungry"
-    } else if (health <= 10){
-    statusDisplay.textContent = " starving..."
-  } else if (health <= 0){
+    (health < 30 && health > 10){
+      statusDisplay.textContent = " feeling hungry."
+    } else if (health <= 10 && health > 0){
+    statusDisplay.textContent = " starving."
+  } else if (health === 0){
     statusDisplay.textContent = " dead!"
-    clearInterval(healthID)
+    gameOver()
   }
+}
+
+function gameOver(){
+  clearInterval(healthID)
+  timer.pause()
 }
 
 healthTime()

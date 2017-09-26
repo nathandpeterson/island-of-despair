@@ -2,10 +2,7 @@ function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
 
-
-
-
-function Crops() {
+function crops() {
   this.plant = function(){
     console.log("I'm planting crops!")
   };
@@ -23,13 +20,12 @@ function hunting() {
   this.goats = function(){
     let success = randomizer();
     if (success > 50){
-      console.log('success')
       food += 10;
     }
   };
   this.fish = function(){
-
   };
 }
+
 
 let hunt = new hunting()

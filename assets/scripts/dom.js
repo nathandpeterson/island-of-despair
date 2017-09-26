@@ -8,7 +8,7 @@ let dateDisplay = document.querySelector('#date')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){
-    if(e.target.textContent.trim()=== 'Hunt for Goats'){
+    if(e.target.textContent.trim() === 'Hunt for Goats'){
         hunt.goats();
     }
   })
