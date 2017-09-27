@@ -5,11 +5,18 @@ h1 {
 .status-bar {
   display: flex;
   justify-content: center;
+  background: #99DDC8
 }
 
-.status-bar .badge {
-  background: green;
+.status-bar h2 {
+  margin-top: 3%;
 }
+
+
+.status-bar .badge {
+  background: #423B0B;
+}
+
 
 .discover-row, .action-row {
   display: flex;
@@ -20,7 +27,38 @@ h1 {
   height: 15rem;
   width: 15rem;
   margin: 5%;
-  border: 1px gray solid;
   border-radius: 5%;
-  background: gray;
+}
+
+.discover-row {
+  background: #7BA098;
+}
+
+.discover {
+  background: #423B0B;
+  color: white;
+}
+
+.discover-2 {
+  background: #7BA098;
+  color: white;
+}
+
+.action-row {
+  background: #12EAEA
+}
+
+.action {
+  background: #B0DB43;
+  color: white;
+}
+
+.thumb-wrap {
+  height: 10px;
+  width: 100px;
+}
+
+.thumb-wrap img {
+  width: 100%;
+  margin: 0 auto;
 }

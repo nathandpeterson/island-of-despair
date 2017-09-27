@@ -8,6 +8,7 @@ function islandTimer(){
   let time = 0;
   let interval;
   let offset;
+  let date;
 
   function update(){
     time += delta();
@@ -24,14 +25,20 @@ function islandTimer(){
 
   function timeFormatter(milliseconds){
     let days = Math.floor(milliseconds/1000)
-    let months = Math.floor(milliseconds/30000)
-    let years = Math.floor(milliseconds/300000)
-    let date;
+    let months = Math.floor(milliseconds/31000)
+    let years = Math.floor(milliseconds/365000)
     if (years > 0){
+      months = months - (years*12)
+      days = days - (months*31)
       date = `${years} years ${months} months ${days} days `
-    } else if (months > 0 ) {
-      date = `${months} months ${days} days `
-    } else {
+    } else if (months === 1 ) {
+      days = days - (months*31)
+      date = `${months} month and ${days} days `
+    } else if (months > 1 ) {
+      days = days - (months*31)
+      date = `${months} months and ${days} days `
+    }
+     else {
       date = `${days} days `
     }
     return date
