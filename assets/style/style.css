@@ -19,13 +19,12 @@ body {
 }
 
 .central-tray {
-  border: 1px red solid;
   padding: 0;
 }
 
 .central-wrapper {
   margin-top: 3rem;
-  max-width: 100%;
+  max-width: 45rem;
   height: auto;
 }
 

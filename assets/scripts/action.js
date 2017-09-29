@@ -10,15 +10,12 @@ function findFood() {
     } else if (success > 50 && goats > 0){
       food += 10;
       goats -= 1;
-      return "You killed a goat! +10 FOOD!"
-      // tray.innerHTML = <div class='central-wrapper'>
-      //   <img src='assets/images/'>
-      // </div>
-      // <div class='dialogue'>
-      //   <h3>You just crashed on a desert island</h3>
-      // </div>
+      tray.innerHTML = `<div class='central-wrapper'>
+        <img src='assets/images/goat-running-cristian-grecu.jpg'>
+      </div>`
+      dialogue.textContent = `You killed a goat! +10 FOOD!`
     } else {
-      return "You couldn't kill any goats."
+      dialogue.textContent = `You could't kill any goats!`
     }
   }
   this.fish = function(){

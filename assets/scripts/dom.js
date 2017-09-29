@@ -6,6 +6,7 @@ let actionBtns = document.querySelectorAll('.action')
 let dateDisplay = document.querySelector('#date')
 let discoverBox = document.querySelector('.discover-2')
 let tray = document.querySelector('.central-tray')
+let dialogue = document.querySelector('#dialogue')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){
