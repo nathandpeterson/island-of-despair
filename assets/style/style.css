@@ -1,5 +1,7 @@
-h1 {
-  text-align: center;
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .status-bar {
@@ -9,28 +11,42 @@ h1 {
 }
 
 .status-bar h2 {
-  margin-top: 3%;
+  margin-top: 1rem;
 }
-
 
 .status-bar .badge {
   background: #423B0B;
 }
 
+.central-tray {
+  border: 1px red solid;
+  padding: 0;
+}
 
-.discover-row, .action-row {
+.central-wrapper {
+  margin-top: 3rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.central-wrapper img {
+  width: 100%;
+}
+
+.discover-col, .action-col {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 .discover, .action {
-  height: 15rem;
-  width: 15rem;
-  margin: 5%;
-  border-radius: 5%;
+  height: 10rem;
+  width: 10rem;
+  margin: 1rem;
+  border-radius: 5%
 }
 
-.discover-row {
+.discover-col {
   background: #7BA098;
 }
 
@@ -39,12 +55,7 @@ h1 {
   color: white;
 }
 
-.discover-2 {
-  background: #7BA098;
-  color: white;
-}
-
-.action-row {
+.action-col {
   background: #12EAEA
 }
 

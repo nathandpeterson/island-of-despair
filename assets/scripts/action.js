@@ -2,7 +2,7 @@ function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
 
-function hunting() {
+function findFood() {
   this.goats = function(){
     let success = randomizer();
     if (goats === 0){
@@ -11,6 +11,12 @@ function hunting() {
       food += 10;
       goats -= 1;
       return "You killed a goat! +10 FOOD!"
+      // tray.innerHTML = <div class='central-wrapper'>
+      //   <img src='assets/images/'>
+      // </div>
+      // <div class='dialogue'>
+      //   <h3>You just crashed on a desert island</h3>
+      // </div>
     } else {
       return "You couldn't kill any goats."
     }
@@ -25,6 +31,7 @@ function hunting() {
       return "You couldn't catch anything."
     }
   }
+
 }
 
 function crops() {
@@ -49,4 +56,4 @@ function fort() {
 }
 
 
-let hunt = new hunting()
+let find = new findFood()

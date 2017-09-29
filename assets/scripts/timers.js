@@ -68,8 +68,11 @@ function islandTimer(){
 var healthID = window.setInterval(healthTime, 1000)
 function healthTime(){
   if(food){
-    food = food - 1
+    food -= 1
     foodDisplay.textContent = " " + food;
+    if(health < 30){
+      health += 1
+    }
     healthDisplay.textContent = " " + health;
   } else {
     health = health - 1;
