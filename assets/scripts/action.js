@@ -18,15 +18,18 @@ function hunting() {
   this.fish = function(){
     let success = randomizer();
     if (success > (75-fishingSkill)) {
-      food += 5;
-      fishingSkill += 2;
+      food += 3;
+      fishingSkill += 1;
+      return "You caught a fish."
+    } else {
+      return "You couldn't catch anything."
     }
   }
 }
 
 function crops() {
   this.plant = function(){
-    console.log("I'm planting crops!")
+
   };
   this.reap = function(){
     console.log("I'm reaping my crops!")
@@ -34,10 +37,16 @@ function crops() {
 }
 
 function fort() {
-  this.build = build();
-  this.fortify = fortify();
+  this.build = function build(){
+    lumber -= 100
+    return "You built a fort, but you might want to fortify it."
+  };
+  this.fortify = function fortify(){
+    lumber -= 100
+    fortStrength += 10
+    return "You improved your fort"
+  };
 }
-
 
 
 let hunt = new hunting()
