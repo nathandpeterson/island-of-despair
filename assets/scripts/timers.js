@@ -3,6 +3,22 @@ let health = 30
 let food = 10
 let count = 0
 let gameTimer = window.setInterval(islandTimer,1000)
+let eventsTimer = 0
+let shipStatus = true
+
+function eventGenerator(currentMilliseconds){
+  if(currentMilliseconds > 10000 && shipStatus === true){
+    sinkShip()
+    shipStatus = false
+  }
+}
+
+function sinkShip(){
+  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+  dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
+  leftCol.firstElementChild.remove()
+}
+
 
 function islandTimer(){
   let time = 0;
@@ -14,6 +30,7 @@ function islandTimer(){
     time += delta();
     let formattedTime = timeFormatter(time);
     dateDisplay.textContent = formattedTime
+    eventGenerator(time)
   }
 
   function delta(){
@@ -79,16 +96,17 @@ function healthTime(){
   } else {
     health = health - 1;
     healthDisplay.textContent = " " + health;
+    progressBar.style.width = (health/30 * 100) + '%';
   }
   if (health >= 30){
     statusDisplay.textContent = " feeling healthy."
   } else if
     (health < 30 && health > 10){
-      statusDisplay.textContent = " feeling hungry."
+      statusDisplay.innerHTML = " feeling <em>hungry</em>."
       foodDisplay.style.color = 'red'
       foodDisplay.style.background = 'black'
     } else if (health <= 10 && health > 0){
-    statusDisplay.textContent = " starving."
+    statusDisplay.innerHTML = " <strong>starving</strong>."
   } else if (health === 0){
     statusDisplay.textContent = " dead!"
     gameOver()

@@ -16,7 +16,19 @@ body {
 }
 
 .status-bar h2 {
-  margin-top: 1rem;
+  margin-top: .75rem;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+#health-progress {
+    width: 100%;
+    background-color: grey;
+}
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    color: red;
 }
 
 .status-bar .badge {
@@ -30,7 +42,7 @@ body {
 }
 
 .central-wrapper {
-  margin-top: 2rem;
+  margin-top: 1rem;
   max-width: 45rem;
   height: auto;
   color: white;
@@ -51,9 +63,7 @@ body {
 
 .discover-col, .action-col {
   display: flex;
-  flex-direction: column;
   flex-wrap: nowrap;
-  margin: 0 3rem;
 }
 
 .action {
@@ -91,4 +101,13 @@ footer {
   background: rgba(32,32,32,.7);
   color: rgba(245,245,245, .7);
   height: 3rem;
+}
+
+@media(min-width:600px){
+  .discover-col, .action-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0 3rem;
+  }
 }
