@@ -7,7 +7,7 @@ body {
 .status-bar {
   display: flex;
   justify-content: center;
-  background: #99DDC8
+  background: #F2C14E;
 }
 
 .status-bar h2 {
@@ -18,14 +18,18 @@ body {
   background: #423B0B;
 }
 
-.central-tray {
-  padding: 0;
+.actions {
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #434343);
+  background: linear-gradient(to right, #000000, #434343);
 }
 
 .central-wrapper {
   margin-top: 3rem;
   max-width: 45rem;
   height: auto;
+  color: white;
+  text-align: center;
 }
 
 .central-wrapper img {
@@ -46,21 +50,16 @@ body {
 }
 
 .discover-col {
-  background: #7BA098;
+
 }
 
-.discover {
-  background: #423B0B;
+.discover, .action {
+  background: #83781B;
   color: white;
 }
 
 .action-col {
-  background: #12EAEA
-}
 
-.action {
-  background: #B0DB43;
-  color: white;
 }
 
 .thumb-wrap {

@@ -2,6 +2,49 @@ function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
 
+function exploreShip(){
+  let success = randomizer()
+  if(success <= 10) {
+    dialogue.textContent = `You found watery corpses and spoiled food.
+    The ship has been slowly sinking for ${date.textContent}`
+  } else if (success <= 20) {
+    dialogue.textContent = `You found a sack of biscuit. +5 Food!
+    The ship has been slowly sinking for ${date.textContent}`
+    food += 5;
+  } else if (success <= 30) {
+    dialogue.textContent = `You found lumber. +10 Lumber!
+    The ship has been slowly sinking for ${date.textContent}`
+    lumber += 10;
+  } else if (success <= 40) {
+    dialogue.textContent = `You found a cask of ale. +5 Food!
+    The ship has been slowly sinking for ${date.textContent}`
+    food += 5;
+  } else if (success <= 50) {
+    dialogue.textContent = `You found dried and salted fish. +12 Food!
+    The ship has been slowly sinking for ${date.textContent}`
+    food += 12;
+  } else if (success <= 60) {
+    dialogue.textContent = `You found some carpenty tools!
+    The ship has been slowly sinking for ${date.textContent}`
+    carpentyTools = true;
+  } else if (success <= 70) {
+    dialogue.textContent = `You found some gold doubloons! + 100 gold!
+    The ship has been slowly sinking for ${date.textContent}`
+    gold += 100;
+  } else if (success <= 80) {
+    dialogue.textContent = `You found some dried fruit! + 5 Food!
+    The ship has been slowly sinking for ${date.textContent}`
+    food += 5;
+  } else if (success <= 90) {
+    dialogue.textContent = `You found some wood! + 15 Lumber!
+    The ship has been slowly sinking for ${date.textContent}`
+    lumber += 15;
+  } else if (success <= 100) {
+    dialogue.textContent = `You found some books and maps!
+    The ship has been slowly sinking for ${date.textContent}`
+  }
+}
+
 function findFood() {
   this.goats = function(){
     let success = randomizer();
