@@ -1,6 +1,6 @@
 'use strict'
 let health = 30
-let food = 20
+let food = 10
 let count = 0
 let gameTimer = window.setInterval(islandTimer,1000)
 
@@ -70,6 +70,8 @@ function healthTime(){
   if(food){
     food -= 1
     foodDisplay.textContent = " " + food;
+    foodDisplay.style.color = 'white'
+    foodDisplay.style.background = 'rgba(248,248,248,.3)';
     if(health < 30){
       health += 1
     }
@@ -78,12 +80,13 @@ function healthTime(){
     health = health - 1;
     healthDisplay.textContent = " " + health;
   }
-
   if (health >= 30){
     statusDisplay.textContent = " feeling healthy."
   } else if
     (health < 30 && health > 10){
       statusDisplay.textContent = " feeling hungry."
+      foodDisplay.style.color = 'red'
+      foodDisplay.style.background = 'black'
     } else if (health <= 10 && health > 0){
     statusDisplay.textContent = " starving."
   } else if (health === 0){
@@ -93,6 +96,8 @@ function healthTime(){
 }
 
 function gameOver(){
+  dialogueImage.innerHTML = '<img src ="assets/images/skeleton.jpg"> '
+  dialogue.textContent = 'You perished...'
   clearInterval(healthID)
   timer.pause()
 }

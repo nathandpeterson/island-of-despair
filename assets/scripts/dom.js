@@ -5,6 +5,7 @@ let actionBtns = document.querySelectorAll('.action')
 let dateDisplay = document.querySelector('#date')
 let tray = document.querySelector('.central-tray')
 let dialogue = document.querySelector('#dialogue')
+let dialogueImage = document.querySelector('#dialogue-image')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){

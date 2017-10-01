@@ -4,6 +4,7 @@ function randomizer(){
 
 function exploreShip(){
   let success = randomizer()
+  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
   if(success <= 10) {
     dialogue.textContent = `You found watery corpses and spoiled food.
     The ship has been slowly sinking for ${date.textContent}`
@@ -53,12 +54,11 @@ function findFood() {
     } else if (success > 50 && goats > 0){
       food += 10;
       goats -= 1;
-      tray.innerHTML = `<div class='central-wrapper'>
-        <img src='assets/images/goat-running-cristian-grecu.jpg'>
-      </div>`
+      dialogueImage.innerHTML = `<img src='assets/images/goat.jpg'>`
       dialogue.textContent = `You killed a goat! +10 FOOD!`
     } else {
-      dialogue.textContent = `You could't kill any goats!`
+      dialogue.textContent = `You couldn't catch the damn goat...`
+      dialogueImage.innerHTML = `<img src='assets/images/goat-running-cristian-grecu.jpg'>`
     }
   }
   this.fish = function(){
@@ -66,12 +66,11 @@ function findFood() {
     if (success > (75-fishingSkill)) {
       food += 3;
       fishingSkill += 1;
-      return "You caught a fish."
+      dialogue.textContent =  "You caught a fish."
     } else {
-      return "You couldn't catch anything."
+      dialogue.textContent =  "You couldn't catch anything."
     }
   }
-
 }
 
 function crops() {
