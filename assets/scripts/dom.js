@@ -1,3 +1,5 @@
+'use strict'
+
 let healthDisplay = document.querySelector('#health')
 let progressBar = document.querySelector('.progress-bar')
 let foodDisplay = document.querySelector('#food')
@@ -8,10 +10,11 @@ let tray = document.querySelector('.central-tray')
 let dialogue = document.querySelector('#dialogue')
 let dialogueImage = document.querySelector('#dialogue-image')
 let leftCol = document.querySelector('.discover-col')
+let rightCol = document.querySelector('.action-col')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){
-    if(e.target.textContent.trim() === 'Hunt for Goats'){
+    if(e.target.classList.contains('hunt-goats')) {
       find.goats();
     }
     if(e.target.classList.contains('scavange-ship')) {

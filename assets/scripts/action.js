@@ -1,3 +1,4 @@
+'use strict'
 function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
@@ -11,53 +12,66 @@ function exploreShip(){
   } else if (success <= 20) {
     dialogue.textContent = `You found a sack of biscuit. +5 Food!
     The ship has been slowly sinking for ${date.textContent}`
-    food += 5;
+    food += 5
+    shipItems.food -=5
   } else if (success <= 30) {
     dialogue.textContent = `You found lumber. +10 Lumber!
     The ship has been slowly sinking for ${date.textContent}`
-    lumber += 10;
+    inventory.lumber += 10
+    shipItems.lumber -= 10
   } else if (success <= 40) {
     dialogue.textContent = `You found a cask of ale. +5 Food!
     The ship has been slowly sinking for ${date.textContent}`
-    food += 5;
+    food += 5
+    shipItems.food -= 5
   } else if (success <= 50) {
-    dialogue.textContent = `You found dried and salted fish. +12 Food!
+    dialogue.textContent = `You found some seeds. +5 Seeds!
     The ship has been slowly sinking for ${date.textContent}`
-    food += 12;
+    inventory.seeds += 5
+    shipItems.seeds -= 5
+    updateState()
   } else if (success <= 60) {
     dialogue.textContent = `You found some carpenty tools!
     The ship has been slowly sinking for ${date.textContent}`
-    carpentyTools = true;
+    inventory.carpentyTools = true;
+    updateState();
   } else if (success <= 70) {
     dialogue.textContent = `You found some gold doubloons! + 100 gold!
     The ship has been slowly sinking for ${date.textContent}`
-    gold += 100;
+    inventory.gold += 100
+    shipItems.gold -= 100
   } else if (success <= 80) {
     dialogue.textContent = `You found some dried fruit! + 5 Food!
     The ship has been slowly sinking for ${date.textContent}`
-    food += 5;
+    food += 5
+    shipItems.food -= 5
   } else if (success <= 90) {
     dialogue.textContent = `You found some wood! + 15 Lumber!
     The ship has been slowly sinking for ${date.textContent}`
-    lumber += 15;
+    inventory.lumber += 15
+    shipItems.lumber -= 15
   } else if (success <= 100) {
-    dialogue.textContent = `You found some books and maps!
+    inventory.musket = true
+    inventory.powder += 5
+    dialogue.textContent = `You found a musket and some powder!
     The ship has been slowly sinking for ${date.textContent}`
+    updateState()
   }
 }
 
 function findFood() {
   this.goats = function(){
     let success = randomizer();
-    if (goats === 0){
-      return "There are no more goats on the island."
-    } else if (success > 50 && goats > 0){
+    if (islandState.goatQuantity === 0){
+      dialogue.textContent = "There are no more goats on the island."
+      dialogueImage.innerHTML = `<img src="assets/images/tropical-island.jpg">`
+    } else if (success > 50 && islandState.goatQuantity > 0){
       food += 10;
-      goats -= 1;
+      islandState.goatQuantity -= 1;
       dialogueImage.innerHTML = `<img src='assets/images/goat.jpg'>`
       dialogue.textContent = `You killed a goat! +10 FOOD!`
     } else {
-      dialogue.textContent = `You couldn't catch the damn goat...`
+      dialogue.textContent = `You couldn't catch the goat...`
       dialogueImage.innerHTML = `<img src='assets/images/goat-running-cristian-grecu.jpg'>`
     }
   }
@@ -84,13 +98,13 @@ function crops() {
 
 function fort() {
   this.build = function build(){
-    lumber -= 100
-    return "You built a fort, but you might want to fortify it."
+    inventory.lumber -= 100
+    dialogue.textContent = "You built a fort, but you might want to fortify it."
   };
   this.fortify = function fortify(){
-    lumber -= 100
-    fortStrength += 10
-    return "You improved your fort"
+    inventory.lumber -= 100;
+    inventory.fortStrength += 10;
+    dialogue.textContent = "You improved your fort"
   };
 }
 
