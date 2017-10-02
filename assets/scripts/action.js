@@ -5,57 +5,97 @@ function randomizer(){
 
 function exploreShip(){
   let success = randomizer()
-  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
-  if(success <= 10) {
+  function corpses(){
     dialogue.textContent = `You found watery corpses and spoiled food.
     The ship has been slowly sinking for ${date.textContent}`
+  }
+  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+  if(success <= 10) {
+    corpses()
   } else if (success <= 20) {
-    dialogue.textContent = `You found a sack of biscuit. +5 Food!
-    The ship has been slowly sinking for ${date.textContent}`
-    food += 5
-    shipItems.food -=5
+    if(shipItems.food > 5) {
+      dialogue.textContent = `You found a sack of biscuit. +5 Food!
+      The ship has been slowly sinking for ${date.textContent}`
+      food += 5
+      shipItems.food -=5
+    } else {
+      corpses()
+    }
   } else if (success <= 30) {
-    dialogue.textContent = `You found lumber. +10 Lumber!
-    The ship has been slowly sinking for ${date.textContent}`
-    inventory.lumber += 10
-    shipItems.lumber -= 10
+    if(shipItems.lumber > 10) {
+      dialogue.textContent = `You found lumber. +10 Lumber!
+      The ship has been slowly sinking for ${date.textContent}`
+      inventory.lumber += 10
+      shipItems.lumber -= 10
+    } else {
+      corpses()
+    }
   } else if (success <= 40) {
-    dialogue.textContent = `You found a cask of ale. +5 Food!
-    The ship has been slowly sinking for ${date.textContent}`
-    food += 5
-    shipItems.food -= 5
+    if (shipItems.food > 5){
+      dialogue.textContent = `You found a cask of ale. +5 Food!
+      The ship has been slowly sinking for ${date.textContent}`
+      food += 5
+      shipItems.food -= 5
+    } else {
+      corpses()
+    }
   } else if (success <= 50) {
-    dialogue.textContent = `You found some seeds. +5 Seeds!
-    The ship has been slowly sinking for ${date.textContent}`
-    inventory.seeds += 5
-    shipItems.seeds -= 5
-    updateState()
+    if(shipItems.seeds > 5){
+      dialogue.textContent = `You found some seeds. +5 Seeds!
+      The ship has been slowly sinking for ${date.textContent}`
+      inventory.seeds += 5
+      shipItems.seeds -= 5
+      updateState()
+    } else {
+      corpses()
+    }
   } else if (success <= 60) {
-    dialogue.textContent = `You found some carpenty tools!
-    The ship has been slowly sinking for ${date.textContent}`
-    inventory.carpentyTools = true;
-    updateState();
+    if (shipItems.carpentyTools > 0){
+      dialogue.textContent = `You found some carpenty tools!
+      The ship has been slowly sinking for ${date.textContent}`
+      inventory.carpentyTools = true
+      shipItems.carpentyTools -= 1
+      updateState();
+    } else {
+      corpses()
+    }
   } else if (success <= 70) {
-    dialogue.textContent = `You found some gold doubloons! + 100 gold!
-    The ship has been slowly sinking for ${date.textContent}`
-    inventory.gold += 100
-    shipItems.gold -= 100
+    if (shipItems.gold > 0){
+      dialogue.textContent = `You found some gold doubloons! + 100 gold!
+      The ship has been slowly sinking for ${date.textContent}`
+      inventory.gold += 100
+      shipItems.gold -= 100
+    } else {
+      corpses()
+    }
   } else if (success <= 80) {
-    dialogue.textContent = `You found some dried fruit! + 5 Food!
-    The ship has been slowly sinking for ${date.textContent}`
-    food += 5
-    shipItems.food -= 5
+    if (shipItems.food > 5){
+      dialogue.textContent = `You found some dried fruit! + 5 Food!
+      The ship has been slowly sinking for ${date.textContent}`
+      food += 5
+      shipItems.food -= 5
+    } else {
+      corpses()
+    }
   } else if (success <= 90) {
-    dialogue.textContent = `You found some wood! + 15 Lumber!
-    The ship has been slowly sinking for ${date.textContent}`
-    inventory.lumber += 15
-    shipItems.lumber -= 15
+    if (shipItems.lumber > 15){
+      dialogue.textContent = `You found some wood! + 15 Lumber!
+      The ship has been slowly sinking for ${date.textContent}`
+      inventory.lumber += 15
+      shipItems.lumber -= 15
+    } else {
+      corpses()
+    }
   } else if (success <= 100) {
-    inventory.musket = true
-    inventory.powder += 5
-    dialogue.textContent = `You found a musket and some powder!
-    The ship has been slowly sinking for ${date.textContent}`
-    updateState()
+    if (shipItems.powder > 0){
+      inventory.musket = true
+      inventory.powder += 5
+      dialogue.textContent = `You found a musket and some powder!
+      The ship has been slowly sinking for ${date.textContent}`
+      updateState()
+    } else {
+      corpses()
+    }
   }
 }
 
@@ -87,9 +127,10 @@ function findFood() {
   }
 }
 
-function crops() {
-  this.plant = function(){
-
+function planting() {
+  this.seeds = function(){
+    dialogue.textContent = "You planted some seeds. I wonder if they will grow..."
+    dialogueImage.innerHTML = `<img src="#">`
   };
   this.reap = function(){
     console.log("I'm reaping my crops!")
@@ -110,3 +151,4 @@ function fort() {
 
 
 let find = new findFood()
+let plant = new planting()

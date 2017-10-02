@@ -14,11 +14,12 @@ let rightCol = document.querySelector('.action-col')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){
-    if(e.target.classList.contains('hunt-goats')) {
-      find.goats();
-    }
     if(e.target.classList.contains('scavange-ship')) {
       exploreShip();
     }
+    if(e.target.classList.contains('plant-seeds')) {
+      console.log('plant seeds!')
+    }
+
   })
 }
