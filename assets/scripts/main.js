@@ -1,5 +1,7 @@
 'use strict'
-// let goats = 10 + Math.ceil(randomizer()/10)
+
+let health = 10
+let food = 10
 
 let inventory = {
   clothing: false,
@@ -34,7 +36,7 @@ let shipItems = {
 let updateState = function(){
   if (inventory.carpentyTools === true && islandState.fort === false) {
   let temp = document.createElement(`div`)
-  temp.className = 'build-fort action'
+  temp.className = 'build-fort action animated fadeIn'
   temp.innerHTML = `<p>Build a Fort</p>`
   rightCol.append(temp)
   temp.addEventListener('click', function(){
@@ -53,7 +55,7 @@ let updateState = function(){
 
   if ((inventory.musket === true && inventory.shot > 0) && islandState.hunting === false) {
     let temp = document.createElement(`div`)
-    temp.className = 'hunt-goats action'
+    temp.className = 'hunt-goats action animated fadeIn'
     temp.innerHTML = `<p>Hunt for Goats</p>`
     rightCol.append(temp)
     islandState.hunting = true;
@@ -63,7 +65,7 @@ let updateState = function(){
   }
   if (inventory.seeds > 0 && islandState.seeds === false){
     let temp = document.createElement(`div`)
-    temp.className = 'plant-seeds action'
+    temp.className = 'plant-seeds action animated fadeIn'
     temp.innerHTML = `<p>Plant Seeds</p>`
     rightCol.append(temp)
     islandState.seeds = true;
@@ -71,5 +73,4 @@ let updateState = function(){
       plant.seeds()
     })
   }
-
 }

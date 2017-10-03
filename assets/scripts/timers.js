@@ -1,24 +1,22 @@
 'use strict'
-let health = 30
-let food = 10
+
 let gameTimer = window.setInterval(islandTimer,1000)
-
-function init(){
-
-}
+let healthID
+let justDays
+let islandTimerStatus
 
 function eventGenerator(currentMilliseconds){
-  if(currentMilliseconds > 15000 && islandState.shipStatus === true){
-    
+  if(currentMilliseconds > 150000 && islandState.shipStatus === false){
+    //something here
   }
 }
 
 function sinkShip(){
   dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
   dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
-  leftCol.firstElementChild.remove()
+  leftCol.firstElementChild.classList += 'fadeOut animated infinite'
+  // leftCol.firstElementChild.remove()
 }
-
 
 function islandTimer(){
   let time = 0
@@ -42,6 +40,7 @@ function islandTimer(){
 
   function timeFormatter(milliseconds){
     let days = Math.floor(milliseconds/1000)
+    justDays = days
     let months = Math.floor(milliseconds/31000)
     let years = Math.floor(milliseconds/365000)
     if (years > 0){
@@ -75,6 +74,7 @@ function islandTimer(){
       clearInterval(interval)
       interval = null
       this.isOn = false
+      islandTimerStatus = false
     }
   }
   this.reset = function(){
@@ -82,44 +82,45 @@ function islandTimer(){
   }
 }
 
-var healthID = window.setInterval(healthTime, 1000)
 function healthTime(){
-  if(food){
-    food -= 1
-    foodDisplay.textContent = " " + food;
-    foodDisplay.style.color = 'white'
-    foodDisplay.style.background = 'rgba(248,248,248,.3)';
-    if(health < 30){
-      health += 1
+  if(islandTimerStatus = true){
+    if(food){
+      food -= 1
+      foodDisplay.textContent = " " + food;
+      foodDisplay.style.color = 'white'
+      foodDisplay.style.background = 'rgba(248,248,248,.3)';
+      if(health < 30){
+        health += 1
+      }
+      healthDisplay.textContent = " : " + health;
+    } else {
+      health = health - 1;
+      healthDisplay.textContent = " : " + health;
+      progressBar.style.width = (health/30 * 100) + '%';
     }
-    healthDisplay.textContent = " : " + health;
-  } else {
-    health = health - 1;
-    healthDisplay.textContent = " : " + health;
-    progressBar.style.width = (health/30 * 100) + '%';
-  }
-  if (health >= 30){
-    statusDisplay.textContent = " feeling healthy."
-  } else if
-    (health < 30 && health > 10){
-      statusDisplay.innerHTML = " feeling <em>hungry</em>."
-      foodDisplay.style.color = 'red'
-      foodDisplay.style.background = 'black'
-    } else if (health <= 10 && health > 0){
-    statusDisplay.innerHTML = " <strong>starving</strong>."
-  } else if (health === 0){
-    statusDisplay.textContent = " dead!"
-    gameOver()
+    if (health >= 30){
+      statusDisplay.textContent = " feeling healthy."
+    } else if
+      (health < 30 && health > 10){
+        statusDisplay.innerHTML = " feeling <em>hungry</em>."
+        foodDisplay.style.color = 'red'
+        foodDisplay.style.background = 'black'
+      } else if (health <= 10 && health > 0){
+      statusDisplay.innerHTML = " <strong>starving</strong>."
+    } else if (health === 0){
+      statusDisplay.textContent = " dead!"
+      gameOver()
+    }
   }
 }
 
 function gameOver(){
   dialogueImage.innerHTML = '<img src ="assets/images/skeleton.jpg"> '
   dialogue.textContent = 'You perished...'
+  localStorage.setItem('max-days', justDays)
+  localStorage.setItem('last-game', justDays)
   clearInterval(healthID)
   timer.pause()
 }
 
-healthTime()
 let timer = new islandTimer()
-timer.start()

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Island of Despair</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="/assets/style/animate.css" rel="stylesheet">
     <link href="/assets/style/style.css" rel="stylesheet">
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -15,11 +16,11 @@
   </head>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="#">The Island of Despair</a>
+      <a class="navbar-brand" href="#" id="brand">The Island of Despair</a>
     </nav>
-    <div id="main-dialogue">
-      <h1>Welcome to the Island of Despair. What is your name?</h1>
-      <input type="text" placeholder="Your Name" id="userName">
+    <div id="main-dialogue" class="slideOutDown">
+      <h1 id="big-message">Welcome to the Island of Despair. What is your name?</h1>
+      <input required type="text" placeholder="Your Name" id="userName">
       <button type="button" class="btn btn-secondary btn-lg btn-block" id="userName-submit">SUBMIT</button>
     </div>
     <div class="status-bar">
@@ -27,19 +28,18 @@
         <div class="col">
           <h2>Health <span id="health"></span> Food: <span class="badge badge-default" id="food"></span>  </h2>
           <div id="health-progress" class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+            <div class="progress-bar" role="progressbar" style="width: 0%">
+            </div>
           </div>
           <h4> You have been on the island for <span id="date"></span> and you are <span id="status"></span></h4>
         </div>
         <div class="col">
           <div class="inventory-wrapper">
-            <table class="table table-inverse">
+            <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Item
-                  </th>
-                  <th>Quantity
-                  </th>
+                  <th>Item</th>
+                  <th>Quantity</th>
                 </tr>
               </thead>
               <tbody id="inventory-body">

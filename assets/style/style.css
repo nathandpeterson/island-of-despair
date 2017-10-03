@@ -53,9 +53,10 @@ body {
   margin-top: 1rem;
 }
 
-.table-inverse {
-  background: rgba(192,192,192, .4);
-  color: rgba(245,245,245, .7);
+.table, tr {
+  background: rgba(192,192,192, .1);
+  color: rgba(245,245,245, .5);
+  border: transparent solid 1px;
 }
 
 .actions {
@@ -96,7 +97,7 @@ body {
   height: 8rem;
   width: 8rem;
   margin: 1rem;
-  border-radius: 5%
+  border-radius: 5%;
 }
 
 .action:hover {

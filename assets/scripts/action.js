@@ -130,9 +130,10 @@ function findFood() {
   }
   this.goats = function(){
     let success = randomizer();
-    if (inventory.powder === 0){
+    if (inventory.shot === 0){
       dialogue.textContent = `You are out of shot`
       dialogueImage.innerHTML = ``
+      updateState()
     }
     else if (islandState.goats === 0){
       dialogue.textContent = "There are no more goats on the island."
