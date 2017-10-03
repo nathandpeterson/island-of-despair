@@ -51,9 +51,10 @@ body {
 
 .inventory-wrapper {
   margin-top: 1rem;
+  display: none;
 }
 
-.table, tr {
+.table, td {
   background: rgba(192,192,192, .1);
   color: rgba(245,245,245, .5);
   border: transparent solid 1px;

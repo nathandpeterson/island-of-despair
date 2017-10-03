@@ -3,14 +3,23 @@ function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
 
+function corpses(){
+  dialogue.textContent = `You found watery corpses and spoiled food.
+  The ship has been slowly sinking for ${date.textContent}`
+}
+
 function exploreShip(){
-  shipItems.timesVisited += 1
   let success = randomizer()
-  function corpses(){
-    dialogue.textContent = `You found watery corpses and spoiled food.
-    The ship has been slowly sinking for ${date.textContent}`
+  inventoryWrapper.style.display = 'block'
+  shipItems.timesVisited += 1
+  if (shipItems.timesVisited === 0){
+    dialogue.textContent = `You found some seeds. +10 Seeds!`
+    dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+    inventoryDisplay.innerHTML += `<tr><td id='seed-quantity'>Seeds</td><td>10</td></tr>`
+    let seedQuantity = document.querySelector('#seed-quantity')
+    inventory.seeds += 10
+    updateState()
   }
-  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
   if(shipItems.timesVisited > 15){
     sinkShip()
     islandState.shipStatus = false

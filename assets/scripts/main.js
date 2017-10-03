@@ -1,6 +1,6 @@
 'use strict'
 
-let health = 10
+let health = 30
 let food = 10
 
 let inventory = {
