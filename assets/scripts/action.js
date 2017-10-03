@@ -3,33 +3,27 @@ function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
 
-function exploreIsland(){
-  let success = randomizer()
-  function quote(){
-    dialogue.textContent = `What a beautiful island `
-    dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
-  }
-  if(success > 95){
-    dialogue.textContent = `You found a hatchet.`
-    dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
-  } else if (success > 80){
-    dialogue.textContent = `This is a nice beach, I guess...`
-    dialogueImage.innerHTML = `<img src='assets/images/beach.jpg'>`
-  }
-  else {
-    quote()
-  }
-}
-
 function exploreShip(){
+  shipItems.timesVisited += 1
   let success = randomizer()
   function corpses(){
     dialogue.textContent = `You found watery corpses and spoiled food.
     The ship has been slowly sinking for ${date.textContent}`
   }
   dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
-  if(success <= 10) {
-    corpses()
+  if(shipItems.timesVisited > 15){
+    sinkShip()
+    islandState.shipStatus = false
+  } else if(success <= 10) {
+    if(inventory.seeds < 10) {
+      dialogue.textContent = `You found some seeds. +10 Seeds!`
+      inventoryDisplay.innerHTML += `<tr><td id='seed-quantity'>Seeds</td><td>10</td></tr>`
+      let seedQuantity = document.querySelector('#seed-quantity')
+      inventory.seeds += 10
+      updateState()
+    } else {
+      corpses()
+    }
   } else if (success <= 20) {
     if(shipItems.food > 5) {
       dialogue.textContent = `You found a sack of biscuit. +5 Food!`
@@ -91,33 +85,53 @@ function exploreShip(){
       if(inventory.lumber === 15){
         dialogue.textContent = `You found some wood! + 15 Lumber!`
           inventoryDisplay.innerHTML += `<tr><td>Lumber</td><td id="lumberQuantity">${inventory.lumber}</td></tr>`
-        let lumber = document.querySelector('#lumberQuantity')
+      lumber = document.querySelector('#lumberQuantity')
       }
     } else {
       corpses()
     }
   } else if (success <= 100) {
-    if (shipItems.powder > 0){
       if(inventory.musket === false){
-        inventoryDisplay.innerHTML += `<td>Musket</td><td>1</td>`
-
-      inventory.powder += 5
-      dialogue.textContent = `You found a musket and some powder!`
-      inventoryDisplay.innerHTML += `<td>Powder</td><td>${inventory.powder}</td>`
+      inventoryDisplay.innerHTML += `<td>Musket</td><td>1</td>`
+      inventory.shot += 10
+      dialogue.textContent = `You found a musket and some shot!`
+      inventoryDisplay.innerHTML += `<td>Shot</td><td id='shotQuantity'>${inventory.shot}</td>`
+      shotQuantity = document.querySelector('#shotQuantity')
       inventory.musket = true
       updateState()
-      }
     } else {
       corpses()
     }
   }
 }
 
+function exploreIsland(){
+  let success = randomizer()
+  function quote(){
+    dialogue.textContent = `What a beautiful island `
+    dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
+  }
+  if(success > 95){
+    dialogue.textContent = `You found a hatchet.`
+    dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
+  } else if (success > 80){
+    dialogue.textContent = `This is a nice beach, I guess...`
+    dialogueImage.innerHTML = `<img src='assets/images/beach.jpg'>`
+  }
+  else {
+    quote()
+  }
+}
+
 function findFood() {
+  function reduceShot(){
+    inventory.shot -= 1
+    shotQuantity.textContent = Number(shotQuantity.textContent) - 1
+  }
   this.goats = function(){
     let success = randomizer();
     if (inventory.powder === 0){
-      dialogue.textContent = `You are out of powder`
+      dialogue.textContent = `You are out of shot`
       dialogueImage.innerHTML = ``
     }
     else if (islandState.goats === 0){
@@ -126,13 +140,13 @@ function findFood() {
     } else if (success > 50 && islandState.goats > 0){
       food += 10
       islandState.goats -= 1
-      inventory.powder -= 1
       dialogueImage.innerHTML = `<img src='assets/images/goat.jpg'>`
       dialogue.textContent = `You killed a goat! +10 FOOD!`
+      reduceShot()
     } else {
-      inventory.powder -= 1
       dialogue.textContent = `You couldn't catch the goat...`
       dialogueImage.innerHTML = `<img src='assets/images/goat-running-cristian-grecu.jpg'>`
+      reduceShot()
     }
   }
   this.fish = function(){

@@ -8,6 +8,20 @@ body {
   text-align: center;
 }
 
+#main-dialogue {
+  margin: 1rem 8rem 8rem 8rem;
+  padding: 2rem;
+  background: gray;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#main-dialogue input {
+  min-height: 3rem;
+}
+
 .status-bar {
   display: flex;
   justify-content: center;

@@ -1,5 +1,5 @@
 'use strict'
-let goats = 10 + Math.ceil(randomizer()/10)
+// let goats = 10 + Math.ceil(randomizer()/10)
 
 let inventory = {
   clothing: false,
@@ -8,7 +8,7 @@ let inventory = {
   hatchet: false,
   lumber: 0,
   gold: 0,
-  powder: 0,
+  shot: 0,
   seeds: 0
 }
 
@@ -27,7 +27,8 @@ let shipItems = {
   food: 40,
   powder: 10,
   seeds: 20,
-  carpentyTools: 1
+  carpentyTools: 1,
+  timesVisited: 0
 }
 
 let updateState = function(){
@@ -50,7 +51,7 @@ let updateState = function(){
     })
   }
 
-  if ((inventory.musket === true && inventory.powder > 0) && islandState.hunting === false) {
+  if ((inventory.musket === true && inventory.shot > 0) && islandState.hunting === false) {
     let temp = document.createElement(`div`)
     temp.className = 'hunt-goats action'
     temp.innerHTML = `<p>Hunt for Goats</p>`
