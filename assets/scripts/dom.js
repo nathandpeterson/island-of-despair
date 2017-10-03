@@ -17,9 +17,8 @@ for (let i = 0; i < actionBtns.length; i++){
     if(e.target.classList.contains('scavange-ship')) {
       exploreShip();
     }
-    if(e.target.classList.contains('plant-seeds')) {
-      console.log('plant seeds!')
+    if(e.target.classList.contains('explore-island')){
+      exploreIsland();
     }
-
   })
 }

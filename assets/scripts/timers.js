@@ -11,7 +11,7 @@ function eventGenerator(currentMilliseconds){
 }
 
 function sinkShip(){
-  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+  dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
   dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
   leftCol.firstElementChild.remove()
 }

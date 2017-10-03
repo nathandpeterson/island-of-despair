@@ -13,16 +13,16 @@ let inventory = {
 }
 
 let islandState = {
+  goats: 10 + Math.ceil(randomizer()/10),
   fort : false,
   fortStrength : 0,
-  goatQuantity: goats,
   shipStatus: true,
   hunting: false,
   seeds: false
 }
 
 let shipItems = {
-  lumber: 300,
+  lumber: 200,
   gold: 100,
   food: 40,
   powder: 10,
@@ -37,9 +37,17 @@ let updateState = function(){
   temp.innerHTML = `<p>Build a Fort</p>`
   rightCol.append(temp)
   temp.addEventListener('click', function(){
-    find.goats()
+    fort.build()
   })
   islandState.fort = `true`
+  }
+  if (islandState.fort === true && inventory.lumber > 100){
+    temp.className = 'build-fort action'
+    temp.innerHTML = `<p>Improve your Fort</p>`
+    rightCol.append(temp)
+    temp.addEventListener('click', function(){
+      fort.improve()
+    })
   }
 
   if ((inventory.musket === true && inventory.powder > 0) && islandState.hunting === false) {
