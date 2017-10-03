@@ -3,6 +3,10 @@ let health = 30
 let food = 10
 let gameTimer = window.setInterval(islandTimer,1000)
 
+function init(){
+  
+}
+
 function eventGenerator(currentMilliseconds){
   if(currentMilliseconds > 15000 && islandState.shipStatus === true){
     sinkShip()

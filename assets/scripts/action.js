@@ -13,7 +13,7 @@ function exploreIsland(){
     dialogue.textContent = `You found a hatchet.`
     dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
   } else if (success > 80){
-    dialogue.textContent = `What a beautiful place to die.`
+    dialogue.textContent = `This is a nice beach, I guess...`
     dialogueImage.innerHTML = `<img src='assets/images/beach.jpg'>`
   }
   else {
@@ -39,13 +39,8 @@ function exploreShip(){
       corpses()
     }
   } else if (success <= 30) {
-    if(shipItems.lumber > 10) {
-      dialogue.textContent = `You found lumber. +10 Lumber!`
-      inventory.lumber += 10
-      shipItems.lumber -= 10
-    } else {
-      corpses()
-    }
+      dialogue.textContent = `You fell through some rotted wood and hurt yourself. -5 Health`
+      health -= 5
   } else if (success <= 40) {
     if (shipItems.food > 5){
       dialogue.textContent = `You found a cask of ale. +5 Food!`
@@ -55,10 +50,10 @@ function exploreShip(){
       corpses()
     }
   } else if (success <= 50) {
-    if(shipItems.seeds > 5){
-      dialogue.textContent = `You found some seeds. +5 Seeds!`
-      inventory.seeds += 5
-      shipItems.seeds -= 5
+    if(inventory.hatchet === false){
+      dialogue.textContent = `You found a hatchet!`
+      inventory.hatchet = true
+      inventoryDisplay.innerHTML += `<tr><td>Hatchet</td><td>1</td></tr>`
       updateState()
     } else {
       corpses()
@@ -77,6 +72,7 @@ function exploreShip(){
       dialogue.textContent = `You found some gold doubloons! + 100 gold!`
       inventory.gold += 100
       shipItems.gold -= 100
+      inventoryDisplay.innerHTML += `<td>Gold</td><td>${inventory.gold}</td>`
     } else {
       corpses()
     }
@@ -90,18 +86,27 @@ function exploreShip(){
     }
   } else if (success <= 90) {
     if (shipItems.lumber > 15){
-      dialogue.textContent = `You found some wood! + 15 Lumber!`
       inventory.lumber += 15
       shipItems.lumber -= 15
+      if(inventory.lumber === 15){
+        dialogue.textContent = `You found some wood! + 15 Lumber!`
+          inventoryDisplay.innerHTML += `<tr><td>Lumber</td><td id="lumberQuantity">${inventory.lumber}</td></tr>`
+        let lumber = document.querySelector('#lumberQuantity')
+      }
     } else {
       corpses()
     }
   } else if (success <= 100) {
     if (shipItems.powder > 0){
-      inventory.musket = true
+      if(inventory.musket === false){
+        inventoryDisplay.innerHTML += `<td>Musket</td><td>1</td>`
+
       inventory.powder += 5
       dialogue.textContent = `You found a musket and some powder!`
+      inventoryDisplay.innerHTML += `<td>Powder</td><td>${inventory.powder}</td>`
+      inventory.musket = true
       updateState()
+      }
     } else {
       corpses()
     }

@@ -11,6 +11,8 @@ let dialogue = document.querySelector('#dialogue')
 let dialogueImage = document.querySelector('#dialogue-image')
 let leftCol = document.querySelector('.discover-col')
 let rightCol = document.querySelector('.action-col')
+let inventoryDisplay = document.querySelector('#inventory-body')
+let userInputName = document.querySelector('userName')
 
 for (let i = 0; i < actionBtns.length; i++){
   actionBtns[i].addEventListener('click', function(e){

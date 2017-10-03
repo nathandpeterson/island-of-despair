@@ -1,11 +1,11 @@
 'use strict'
 let goats = 10 + Math.ceil(randomizer()/10)
-// let fishingSkill = 0
 
 let inventory = {
   clothing: false,
   musket: false,
   carpentyTools: false,
+  hatchet: false,
   lumber: 0,
   gold: 0,
   powder: 0,
@@ -70,4 +70,5 @@ let updateState = function(){
       plant.seeds()
     })
   }
+
 }
