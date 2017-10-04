@@ -49,6 +49,12 @@ body {
   background: rgba(248,248,248,.3);
 }
 
+#month-display h3 {
+  text-align: left;
+  background: gray;
+  border-radius: 2%;
+}
+
 .inventory-wrapper {
   margin-top: 1rem;
   display: none;

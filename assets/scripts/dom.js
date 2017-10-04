@@ -1,27 +1,28 @@
 'use strict'
 
-let brand = document.querySelector('#brand')
-let mainDialogue = document.querySelector('#main-dialogue')
-let userSubmitButton = document.querySelector('#userName-submit')
-let bigMessage = document.querySelector('#big-message')
-let userInputName = document.querySelector('#userName')
-let prompt = document.querySelector('.prompt')
-let healthDisplay = document.querySelector('#health')
-let progressBar = document.querySelector('.progress-bar')
-let foodDisplay = document.querySelector('#food')
-let statusDisplay = document.querySelector('#status')
 let actionBtns = document.querySelectorAll('.action')
+let bigMessage = document.querySelector('#big-message')
+let bigMessageStatus = true
+let brand = document.querySelector('#brand')
 let dateDisplay = document.querySelector('#date')
-let tray = document.querySelector('.central-tray')
 let dialogue = document.querySelector('#dialogue')
 let dialogueImage = document.querySelector('#dialogue-image')
-let leftCol = document.querySelector('.discover-col')
-let rightCol = document.querySelector('.action-col')
-let inventoryWrapper = document.querySelector('.inventory-wrapper')
+let foodDisplay = document.querySelector('#food')
+let healthDisplay = document.querySelector('#health')
 let inventoryDisplay = document.querySelector('#inventory-body')
-let lumber, shotQuantity, seedQuantity
-let bigMessageStatus = true
-let returningUser
+let inventoryWrapper = document.querySelector('.inventory-wrapper')
+let leftCol = document.querySelector('.discover-col')
+let mainDialogue = document.querySelector('#main-dialogue')
+let monthDisplay = document.querySelector('#month-display')
+let progressBar = document.querySelector('.progress-bar')
+let prompt = document.querySelector('.prompt')
+let rightCol = document.querySelector('.action-col')
+let statusDisplay = document.querySelector('#status')
+let tray = document.querySelector('.central-tray')
+let userInputName = document.querySelector('#userName')
+let userSubmitButton = document.querySelector('#userName-submit')
+let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity,
+
 
 document.addEventListener('DOMContentLoaded',function(e){
   returningUser = localStorage.getItem('name')
