@@ -1,6 +1,6 @@
 'use strict'
 
-let health = 30
+let health = 20
 let food = 10
 
 let inventory = {
@@ -20,13 +20,14 @@ let islandState = {
   fortStrength : 0,
   shipStatus: true,
   hunting: false,
-  seeds: false
+  seeds: false,
+  trees: 5
 }
 
 let shipItems = {
-  lumber: 200,
+  lumber: 50,
   gold: 100,
-  food: 40,
+  food: 60,
   powder: 10,
   seeds: 20,
   carpentyTools: 1,
@@ -44,8 +45,8 @@ let updateState = function(){
   })
   islandState.fort = `true`
   }
-  if (islandState.fort === true && inventory.lumber > 100){
-    temp.className = 'build-fort action'
+  if (islandState.fort === true && inventory.lumber > 25){
+    temp.className = 'build-fort action animated fadeIn'
     temp.innerHTML = `<p>Improve your Fort</p>`
     rightCol.append(temp)
     temp.addEventListener('click', function(){
@@ -68,7 +69,7 @@ let updateState = function(){
     temp.className = 'plant-seeds action animated fadeIn'
     temp.innerHTML = `<p>Plant Seeds</p>`
     rightCol.append(temp)
-    islandState.seeds = true;
+    islandState.seeds = true
     temp.addEventListener('click', function(){
       plant.seeds()
     })

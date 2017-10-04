@@ -8,28 +8,31 @@ function corpses(){
   The ship has been slowly sinking for ${date.textContent}`
 }
 
+function sinkShip(){
+  dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
+  dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
+  leftCol.firstElementChild.remove()
+}
+
 function exploreShip(){
   let success = randomizer()
   inventoryWrapper.style.display = 'block'
   shipItems.timesVisited += 1
-  if (shipItems.timesVisited === 0){
-    dialogue.textContent = `You found some seeds. +10 Seeds!`
-    dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
-    inventoryDisplay.innerHTML += `<tr><td id='seed-quantity'>Seeds</td><td>10</td></tr>`
-    let seedQuantity = document.querySelector('#seed-quantity')
-    inventory.seeds += 10
-    updateState()
-  }
   if(shipItems.timesVisited > 15){
     sinkShip()
     islandState.shipStatus = false
-  } else if(success <= 10) {
-    if(inventory.seeds < 10) {
-      dialogue.textContent = `You found some seeds. +10 Seeds!`
-      inventoryDisplay.innerHTML += `<tr><td id='seed-quantity'>Seeds</td><td>10</td></tr>`
-      let seedQuantity = document.querySelector('#seed-quantity')
-      inventory.seeds += 10
-      updateState()
+  } else if(shipItems.timesVisited === 1){
+    dialogue.textContent = `You found some seeds. +10 Seeds!`
+    dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+    inventoryDisplay.innerHTML += `<tr><td >Seeds</td><td id='seed-quantity'>10</td></tr>`
+    seedQuantity = document.querySelector('#seed-quantity')
+    inventory.seeds += 10
+    updateState()
+  } else if (success <= 10) {
+    if(shipItems.food >= 60) {
+      dialogue.textContent = `You found some pickles. +10 Food!`
+      food += 5
+      shipItems.food -=5
     } else {
       corpses()
     }
@@ -89,10 +92,10 @@ function exploreShip(){
     }
   } else if (success <= 90) {
     if (shipItems.lumber > 15){
-      inventory.lumber += 15
-      shipItems.lumber -= 15
-      if(inventory.lumber === 15){
-        dialogue.textContent = `You found some wood! + 15 Lumber!`
+      inventory.lumber += 25
+      shipItems.lumber -= 25
+      if(inventory.lumber === 25){
+        dialogue.textContent = `You found some wood! + 25 Lumber!`
           inventoryDisplay.innerHTML += `<tr><td>Lumber</td><td id="lumberQuantity">${inventory.lumber}</td></tr>`
       lumber = document.querySelector('#lumberQuantity')
       }
@@ -173,8 +176,14 @@ function findFood() {
 
 function planting() {
   this.seeds = function(){
-    dialogue.textContent = "You planted some seeds. I wonder if they will grow..."
-    dialogueImage.innerHTML = `<img src="assets/images/planting-seeds.jpg">`
+    if(inventory.seeds >= 10){
+      dialogue.textContent = "You planted some seeds. I wonder if they will grow..."
+      dialogueImage.innerHTML = `<img src="assets/images/planting-seeds.jpg">`
+      seedQuantity.innerHTML = Number(seedQuantity.innerHTML) - 10
+      inventory.seeds -= 10
+    } else {
+      dialogue.textContent = "You don't have enough seeds right now."
+    }
   };
   this.reap = function(){
     console.log("I'm reaping my crops!")

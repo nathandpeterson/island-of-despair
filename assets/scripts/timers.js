@@ -3,7 +3,7 @@
 let gameTimer = window.setInterval(islandTimer,1000)
 let healthID
 let justDays
-let islandTimerStatus
+let islandTimerStatus = false
 
 function eventGenerator(currentMilliseconds){
   if(currentMilliseconds > 150000 && islandState.shipStatus === false){
@@ -11,12 +11,7 @@ function eventGenerator(currentMilliseconds){
   }
 }
 
-function sinkShip(){
-  dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
-  dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
-  leftCol.firstElementChild.classList += 'fadeOut animated infinite'
-  // leftCol.firstElementChild.remove()
-}
+
 
 function islandTimer(){
   let time = 0
@@ -61,9 +56,10 @@ function islandTimer(){
   }
 
   this.start = function(){
-    interval = setInterval(update, 10);
+    interval = setInterval(update, 10)
     offset = Date.now()
     this.isOn = true
+    islandTimerStatus = true
     update()
   }
 
@@ -75,6 +71,11 @@ function islandTimer(){
       interval = null
       this.isOn = false
       islandTimerStatus = false
+    } else {
+      interval = setInterval(update, 10)
+      this.isOn = true
+      islandTimerStatus = true
+      update()
     }
   }
   this.reset = function(){
@@ -83,13 +84,13 @@ function islandTimer(){
 }
 
 function healthTime(){
-  if(islandTimerStatus = true){
+  if(islandTimerStatus === true){
     if(food){
       food -= 1
       foodDisplay.textContent = " " + food;
       foodDisplay.style.color = 'white'
       foodDisplay.style.background = 'rgba(248,248,248,.3)';
-      if(health < 30){
+      if(health < 20){
         health += 1
       }
       healthDisplay.textContent = " : " + health;
@@ -98,10 +99,10 @@ function healthTime(){
       healthDisplay.textContent = " : " + health;
       progressBar.style.width = (health/30 * 100) + '%';
     }
-    if (health >= 30){
+    if (health >= 20){
       statusDisplay.textContent = " feeling healthy."
     } else if
-      (health < 30 && health > 10){
+      (health < 20 && health > 10){
         statusDisplay.innerHTML = " feeling <em>hungry</em>."
         foodDisplay.style.color = 'red'
         foodDisplay.style.background = 'black'

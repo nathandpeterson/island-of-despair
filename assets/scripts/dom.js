@@ -19,7 +19,7 @@ let leftCol = document.querySelector('.discover-col')
 let rightCol = document.querySelector('.action-col')
 let inventoryWrapper = document.querySelector('.inventory-wrapper')
 let inventoryDisplay = document.querySelector('#inventory-body')
-let lumber, shotQuantity
+let lumber, shotQuantity, seedQuantity
 let bigMessageStatus = true
 let returningUser
 
@@ -57,19 +57,28 @@ userSubmitButton.addEventListener('click', function(){
   mainDialogue.style.display = 'none'
   userSubmitButton.style.display = 'none'
   userInputName.style.display = 'none'
-  bigMessage.textContent = 'You are trapped. Paused.'
+  bigMessage.innerHTML = 'The game is currently paused. <br>You are still trapped.'
   welcomeMessage(userInputName.value)
   timer.start()
   healthID = window.setInterval(healthTime, 1000)
+
+  // bigMessage.textContent = ''
+  // let temp = document.createElement(`div`)
+  // temp.className = 'animated fadeInLeftBig'
+  // temp.innerHTML = `<p>Please enter a name. <br> (It doesn't have to be your <em>real</em> name...)</p>`
+  // bigMessage.append(temp)
+
 })
 
 brand.addEventListener('click', function(){
   if(bigMessageStatus === false){
     mainDialogue.style.display = 'block'
     bigMessageStatus = true
+    timer.pause()
   } else {
     mainDialogue.style.display = 'none'
     bigMessageStatus = false
+    timer.pause()
   }
 })
 
