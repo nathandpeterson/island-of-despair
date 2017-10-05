@@ -109,7 +109,7 @@ function healthTime(){
         foodDisplay.style.background = 'black'
       } else if (health <= 10 && health > 0){
       statusDisplay.innerHTML = " <strong>starving</strong>."
-    } else if (health === 0){
+    } else if (health <= 0){
       statusDisplay.textContent = " dead!"
       gameOver()
     }

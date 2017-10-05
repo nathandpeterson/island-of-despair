@@ -21,11 +21,11 @@ let statusDisplay = document.querySelector('#status')
 let tray = document.querySelector('.central-tray')
 let userInputName = document.querySelector('#userName')
 let userSubmitButton = document.querySelector('#userName-submit')
-let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity,
+let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity
 
 
-document.addEventListener('DOMContentLoaded',function(e){
-  returningUser = localStorage.getItem('name')
+document.addEventListener('DOMContentLoaded', function(e){
+  returningUser = localStorage.getItem('name' || null)
   if(returningUser){
     let max = localStorage.getItem('max-days')
     let last = localStorage.getItem('last-game')

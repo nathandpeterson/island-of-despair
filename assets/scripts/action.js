@@ -9,10 +9,50 @@ function corpses(){
   dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
 }
 
+function goatsEatFood(){
+  dialogue.textContent = `While you were out exploring the island, goats came and ate some of your provisions. -5 Food`
+  dialogueImage.innerHTML = `<img src="assets/images/happyGoat.png">`
+  food -= 5
+}
+
+function nothing(){
+  dialogue.textContent = `You are less impressed by the beauty of the island...`
+  dialogueImage.innerHTML = `<img src="assets/images/rocky.png">`
+}
+
+function rain() {
+  dialogue.textContent = `You got rained on and caught a bad cold. -5 Health`
+  dialogueImage.innerHTML = `<img src="assets/images/rain.png">`
+  health -= 5
+}
+
+function trees(){
+  dialogue.textContent = `You found a beautiful wooded area.`
+  if(inventory.hatchet){
+    dialogue.innerHTML += `<h3>Want to chop down some trees?</h3>
+    <button class="btn btn-secondary btn-lg btn-block" id="chop">CHOP</button>`
+  let chop = document.querySelector('#chop')
+  chop.addEventListener('click', function(){
+    dialogue.textContent = `You got some lumber. +10 Lumber`
+    dialogueImage.innerHTML = `<img src='assets/images/lumber.png'>`
+    inventory.lumber += 10
+    lumber.textContent = inventory.lumber
+  })
+  }
+  dialogueImage.innerHTML = `<img src="assets/images/trees.png">`
+}
+
+function wildBerries(){
+  dialogue.textContent = `You found some wild berries! +5 FOOD!`
+  dialogueImage.innerHTML = `<img src="assets/images/berries.png">`
+  food += 5
+}
+
 function sinkShip(){
   dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
   dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
   leftCol.firstElementChild.remove()
+  let temp = ''
 }
 
 function exploreShip(){
@@ -32,6 +72,7 @@ function exploreShip(){
   } else if (success <= 10) {
     if(shipItems.food >= 60) {
       dialogue.textContent = `You found a barrel of potatoes. +10 Food!`
+      dialogueImage.innerHTML = `<img src='assets/images/potatoes.png'>`
       food += 5
       shipItems.food -=5
     } else {
@@ -47,7 +88,7 @@ function exploreShip(){
       corpses()
     }
   } else if (success <= 30) {
-      dialogue.textContent = `You fell through some rotted wood and hurt yourself. -5 Health`
+      dialogue.textContent = `You fell through some rotted wood and hurt your leg. -5 Health`
       dialogueImage.innerHTML = `<img src='assets/images/hole.png'>`
       health -= 5
   } else if (success <= 40) {
@@ -92,6 +133,7 @@ function exploreShip(){
   } else if (success <= 80) {
     if (shipItems.food > 5){
       dialogue.textContent = `You found some dried fruit! + 5 Food!`
+      dialogueImage.innerHTML = `<img src='assets/images/fruit.png'>`
       food += 5
       shipItems.food -= 5
     } else {
@@ -128,21 +170,18 @@ function exploreShip(){
 
 function exploreIsland(){
   let success = randomizer()
-  function quote(){
-    dialogue.textContent = `What a beautiful island `
-    dialogueImage.innerHTML = `<img src='assets/images/explore1.jpg'>`
-    food += 100
-  }
-
-  if(success > 10){
-    dialogue.textContent = `You found a dead whale.`
-    dialogueImage.innerHTML = `<img src='#'>`
-  } else if (success > 20){
-    dialogue.textContent = `This is a nice beach, I guess...`
-    dialogueImage.innerHTML = `<img src='assets/images/beach.jpg'>`
-  }
-  else {
-    quote()
+  if(success <= 10){
+    trees()
+  } else if (success <= 20){
+    rain()
+  } else if (success <= 30){
+    nothing()
+  } else if (success <= 50) {
+    wildBerries()
+  } else if (success <= 70){
+    goatsEatFood()
+  } else if (success <= 100){
+    nothing()
   }
 }
 
@@ -189,7 +228,7 @@ function planting() {
   this.seeds = function(){
     if(inventory.seeds >= 10){
       dialogue.textContent = "You planted some seeds. I wonder if they will grow..."
-      dialogueImage.innerHTML = `<img src="assets/images/planting-seeds.jpg">`
+      dialogueImage.innerHTML = `<img src="assets/images/hand-seeds.png">`
       seedQuantity.innerHTML = Number(seedQuantity.innerHTML) - 10
       inventory.seeds -= 10
       seedMonth = currentMonth
@@ -199,6 +238,7 @@ function planting() {
       }, 6000)
     } else {
       dialogue.textContent = "You don't have enough seeds right now."
+      dialogueImage.innerHTML = `<img src="assets/images/dirt.jpg">`
     }
   };
   this.reap = function(month){
@@ -238,7 +278,7 @@ function sprout(){
   if(currentMonth === 1){
     console.log('sprout! sprout! sprout!')
   } else {
-    console.log('sorry charly!')
+    console.log('sorry charley!')
   }
 }
 
