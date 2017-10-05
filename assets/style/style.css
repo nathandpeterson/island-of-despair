@@ -23,10 +23,17 @@ body {
 }
 
 .status-bar {
-  display: flex;
-  justify-content: center;
   background: rgba(192,192,192, .4);
   color: rgba(245,245,245, .7);
+}
+
+.status-bar row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-status {
+  margin: 0 5rem;
 }
 
 .status-bar h2 {
@@ -50,20 +57,25 @@ body {
 }
 
 #month-display h3 {
-  text-align: left;
-  background: gray;
   border-radius: 2%;
+  background: linear-gradient(to right, #000000, #434343);
+  color: white;
 }
 
 .inventory-wrapper {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: none;
 }
 
-.table, td {
-  background: rgba(192,192,192, .1);
-  color: rgba(245,245,245, .5);
+.table {
+  width: 80%;
+}
+
+.table, td, tr {
+  background: rgba(192,192,192, .4);
+  color: rgb(40,40,40);
   border: transparent solid 1px;
+  text-align:  left;
 }
 
 .actions {
@@ -88,7 +100,7 @@ body {
 
 .central-wrapper img {
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: .5rem;
   margin-bottom: 5rem;
 }
 
@@ -101,8 +113,8 @@ body {
   background: rgba(192,192,192, .4);
   color: rgba(245,245,245, .7);
   box-shadow: 10px 5px 5px rgba(24,24,24,.5);
-  height: 8rem;
-  width: 8rem;
+  height: 7rem;
+  width: 7rem;
   margin: 1rem;
   border-radius: 5%;
 }

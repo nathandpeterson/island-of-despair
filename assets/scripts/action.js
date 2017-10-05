@@ -88,6 +88,27 @@ function exploreIsland(){
   }
 }
 
+function exploreSeashore(){
+  let success = randomizer()
+  if(success <= 10){
+    shoreGold()
+  } else if (success <= 20){
+    shoreFood()
+  } else if (success <= 30){
+    shoreBoats()
+  } else if (success <= 50) {
+    nothing()
+  } else if (success <= 70){
+    goatsEatFood()
+  } else if (success <= 100){
+    if(currentMonth > 12){
+      piratesArrive()
+    } else {
+      nothing()
+    }
+  }
+}
+
 function findFood() {
   function reduceShot(){
     inventory.shot -= 1
@@ -138,7 +159,7 @@ function planting() {
       clearInterval(seedTimer)
       seedTimer = window.setTimeout(function() {
         plant.reap(seedMonth)
-      }, 6000)
+      }, 60000)
     } else {
       dialogue.textContent = "You don't have enough seeds right now."
       dialogueImage.innerHTML = `<img src="assets/images/dirt.jpg">`
@@ -148,17 +169,27 @@ function planting() {
     function harvest(){
     }
 
-    if(month === 7){
-      food += 30
-      dialogue.textContent = "Your seeds grew into plants..."
-      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/dirt.jpg">`
-      console.log('planted in feb')
-    } else if (month === (8||9)){
-      console.log('planted in march or april')
-    } else if(month === (10||11)){
-      console.log('planted in may or june')
+    if(month === 5){
+      food += 50
+      dialogue.textContent = "You planted in Feb. Your seeds grew into plants..."
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/harvest-feb.png">`
+      inventory.seeds += 10
+      updateInventory('seed-quantity', 10)
+    } else if (month === (6||7)){
+      food += 100
+      dialogue.textContent = "You planted in spring. Your seeds grew into plants... +100 FOOD! +10 Seeds!"
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/harvest-mar.png">`
+      inventory.seeds += 10
+      updateInventory('seed-quantity', 10)
+    } else if(month === (8||9)){
+      food += 120
+      dialogue.textContent = "You planted in early summer. Your seeds grew into plants... +120 FOOD! +20 Seeds!"
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/harvest-jun.png">`
+      inventory.seeds += 20
+      updateInventory('seed-quantity', 20)
     } else {
-      console.log('planted in the wrong season', month)
+      dialogue.textContent = "You planted in the wrong season. Your seeds never grew..."
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/dirt.png">`
     }
   };
 }

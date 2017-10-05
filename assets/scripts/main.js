@@ -49,14 +49,17 @@ function updateInventory(row, num){
 
 function updateState(){
   if (inventory.carpentyTools === true && islandState.fortStrength === 0) {
-  let temp = document.createElement(`div`)
-  temp.className = 'build-fort action animated fadeIn'
-  temp.id = 'fort-button'
-  temp.innerHTML = `<p>Build a Fort</p>`
-  rightCol.append(temp)
-  temp.addEventListener('click', function(){
-    fort.build()
-    })
+  if(!fortButton){
+    let temp = document.createElement(`div`)
+    fortButton = true
+    temp.className = 'build-fort action animated fadeIn'
+    temp.id = 'fort-button'
+    temp.innerHTML = `<p>Build a Fort</p>`
+    rightCol.append(temp)
+    temp.addEventListener('click', function(){
+      fort.build()
+      })
+    }
   }
   if (islandState.fortStrength === 100 && inventory.lumber >= 100){
     let temp = document.createElement('div')

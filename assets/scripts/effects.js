@@ -88,6 +88,7 @@ function findSeeds (){
 function findTools(){
   dialogue.textContent = `You found some carpenty tools!`
   dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/carpentry.png'>`
+  inventoryDisplay.innerHTML += `<tr><td>Tools</td><td>1</td></tr>`
   inventory.carpentyTools = true
   shipItems.carpentyTools -= 1
   updateState();
@@ -100,14 +101,32 @@ function goatsEatFood(){
 }
 
 function nothing(){
-  dialogue.textContent = `You are less impressed by the beauty of the island...`
-  dialogueImage.innerHTML = `<img src="assets/images/rocky.png">`
+  dialogue.textContent = `The island seems far more forbidding than when you first arrived...`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/rocky.png">`
 }
 
 function rain() {
   dialogue.textContent = `You got rained on and caught a bad cold. -5 Health`
-  dialogueImage.innerHTML = `<img src="assets/images/rain.png">`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/rain.png">`
   health -= 5
+}
+
+function shoreBoats(){
+  dialogue.textContent = `It seems like you can see some ships on the horizon. Or is it just a mirage?`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/horizon.png">`
+}
+
+function shoreFood(){
+  dialogue.textContent = `You caught a crab! Too bad you're going to have to eat it raw...`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/crab.png">`
+  food += 5
+}
+
+function shoreGold(){
+  dialogue.textContent = `You found some gold coins on the beach! I hope nobody comes looking for them. +100 Gold`
+  dialogueImage.innerHTML = `<img src="assets/images/beach-gold.png">`
+  inventory.gold += 50
+  updateInventory('gold-quantity', 50)
 }
 
 function sinkShip(){

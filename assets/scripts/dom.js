@@ -21,7 +21,7 @@ let statusDisplay = document.querySelector('#status')
 let tray = document.querySelector('.central-tray')
 let userInputName = document.querySelector('#userName')
 let userSubmitButton = document.querySelector('#userName-submit')
-let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity
+let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity, fortButton
 
 
 document.addEventListener('DOMContentLoaded', function(e){
@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function(e){
   if(returningUser){
     let max = localStorage.getItem('max-days')
     let last = localStorage.getItem('last-game')
-    bigMessage.innerHTML = `Welcome back, ${returningUser}!
-    Last time you survived for ${last} days!
-    The longest you have survived is ${max} days!
-    Can you survive longer?`
+    bigMessage.innerHTML = `<p>Welcome back, ${returningUser}!</p>
+    <p>Last time you survived for ${last} days!</p>
+    <p>The longest you have survived is ${max} days!
+    Can you survive longer?</p>`
     userInputName.style.display = 'none'
     userSubmitButton.innerHTML = 'PLAY AGAIN'
     welcomeMessage(returningUser)
@@ -90,6 +90,9 @@ for (let i = 0; i < actionBtns.length; i++){
       }
       if(e.target.classList.contains('explore-island')){
         exploreIsland();
+      }
+      if(e.target.classList.contains('explore-seashore')){
+        exploreSeashore()
       }
     })
   }
