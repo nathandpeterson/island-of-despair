@@ -10,19 +10,22 @@ let dialogueImage = document.querySelector('#dialogue-image')
 let foodDisplay = document.querySelector('#food')
 let healthDisplay = document.querySelector('#health')
 let inventoryDisplay = document.querySelector('#inventory-body')
+let inventoryHide = false
+let inventoryIcon = document.querySelector('#inventory-icon')
 let inventoryWrapper = document.querySelector('.inventory-wrapper')
 let leftCol = document.querySelector('.discover-col')
 let mainDialogue = document.querySelector('#main-dialogue')
 let monthDisplay = document.querySelector('#month-display')
+let monthIcon = document.querySelector('#month-icon')
 let progressBar = document.querySelector('.progress-bar')
 let prompt = document.querySelector('.prompt')
 let rightCol = document.querySelector('.action-col')
 let statusDisplay = document.querySelector('#status')
+let statusIcon = document.querySelector('#status-icon')
 let tray = document.querySelector('.central-tray')
 let userInputName = document.querySelector('#userName')
 let userSubmitButton = document.querySelector('#userName-submit')
 let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity, fortButton
-
 
 document.addEventListener('DOMContentLoaded', function(e){
   returningUser = localStorage.getItem('name' || null)
@@ -81,6 +84,37 @@ brand.addEventListener('click', function(){
     bigMessageStatus = false
     timer.pause()
   }
+})
+
+statusIcon.addEventListener('mouseenter', function(e){
+  e.target.nextElementSibling.style.display = 'block'
+  e.target.style.color = 'white'
+})
+statusIcon.addEventListener('mouseleave', function(e){
+  e.target.nextElementSibling.style.display = 'none'
+  e.target.style.color = 'rgba(245,245,245, .7)'
+})
+
+monthIcon.addEventListener('mouseenter', function(e){
+  monthDisplay.style.display = 'block'
+  e.target.style.color = 'white'
+})
+monthIcon.addEventListener('mouseleave', function(e){
+  e.target.nextElementSibling.style.display = 'none'
+  e.target.style.color = 'rgba(245,245,245, .7)'
+})
+
+inventoryIcon.addEventListener('click', function(e){
+  if(inventoryHide === true){
+    inventoryWrapper.style.display = 'block'
+    e.target.style.color = 'white'
+    inventoryHide = false
+  } else {
+    inventoryWrapper.style.display = 'none'
+    e.target.style.color = 'rgba(245,245,245, .7)'
+    inventoryHide = true
+  }
+
 })
 
 for (let i = 0; i < actionBtns.length; i++){

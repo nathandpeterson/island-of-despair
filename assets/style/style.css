@@ -32,6 +32,15 @@ body {
   justify-content: space-between;
 }
 
+.status-dialogue, .month-dialogue {
+  width: 100%;
+  margin: .5rem;
+}
+
+.status-dialogue h4, #month-display {
+  display: none;
+}
+
 .time-status {
   margin: 0 5rem;
 }
@@ -62,8 +71,16 @@ body {
   color: white;
 }
 
-.inventory-wrapper {
+.inventory {
+  margin-top: .75rem;
+}
+
+#inventory-icon {
   margin-top: 2rem;
+}
+
+.inventory-wrapper {
+  margin-top: 1rem;
   display: none;
 }
 
@@ -107,6 +124,7 @@ body {
 .discover-col, .action-col {
   display: flex;
   flex-wrap: nowrap;
+  width: 100%;
 }
 
 .action {
@@ -152,5 +170,23 @@ footer {
     flex-direction: column;
     flex-wrap: nowrap;
     margin: 0 3rem;
+  }
+  #main-dialogue {
+    margin: 1rem 8rem 8rem 8rem;
+    padding: 2rem;
+    background: gray;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .action {
+    background: rgba(192,192,192, .4);
+    color: rgba(245,245,245, .7);
+    box-shadow: 10px 5px 5px rgba(24,24,24,.5);
+    height: 7rem;
+    width: 7rem;
+    margin: 1rem;
+    border-radius: 5%;
   }
 }

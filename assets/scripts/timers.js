@@ -12,7 +12,7 @@ function islandTimer(){
     time += delta()
     let formattedTime = timeFormatter(time)
     dateDisplay.textContent = formattedTime
-    monthDisplay.innerHTML = `<h3>The month is ${monthFormatter(currentMonth)}</h3>`
+    monthDisplay.textContent = `The month is ${monthFormatter(currentMonth)}`
   }
 
   function delta(){

@@ -5,6 +5,7 @@
     <title>The Island of Despair</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="/assets/style/animate.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/style/style.css" rel="stylesheet">
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -32,12 +33,20 @@
             <div class="progress-bar" role="progressbar" style="width: 100%">
             </div>
           </div>
-          <h4> You have been on the island for <span id="date"></span> and you are <span id="status"></span></h4>
-          <div id="month-display">
-            <h4> The month is October</h4>
+          <div class="row">
+            <div class="col status-dialogue">
+              <i id="status-icon"class="fa fa-clock-o fa-3x" aria-hidden="true"></i>
+              <h4> You have been on the island for <span id="date"></span> and you are <span id="status"></span></h4>
+            </div>
+            <div class="col month-dialogue">
+              <i id="month-icon" class="fa fa-calendar fa-3x" aria-hidden="true"></i>
+              <h4 id="month-display"> The month is October</h4>
+            </div>
           </div>
         </div>
-        <div class="col">
+        <div class="inventory col">
+          <h2>Inventory</h2>
+          <i id="inventory-icon" class="inventory fa fa-shopping-basket fa-3x" aria-hidden="true"></i>
           <div class="inventory-wrapper">
             <table class="table table-sm table-striped">
               <thead>

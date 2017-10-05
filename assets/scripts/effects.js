@@ -39,12 +39,14 @@ function findGold(){
   inventory.gold += 100
   shipItems.gold -= 100
   inventoryDisplay.innerHTML += `<td>Gold</td><td id="gold-quantity" class="inventory-data">${inventory.gold}</td>`
+  inventoryHide = false
 }
 
 function findHatchet() {
   dialogue.textContent = `You found a hatchet!`
   inventory.hatchet = true
   inventoryDisplay.innerHTML += `<tr><td>Hatchet</td><td>1</td></tr>`
+  inventoryHide = false
   dialogueImage.innerHTML = `<img class='animated flipInX' src='assets/images/axe.png'>`
   updateState()
 }
@@ -56,6 +58,7 @@ function findLumber(){
     dialogue.textContent = `You found some wood! + 100 Lumber!`
     dialogueImage.innerHTML = `<img class='animated fadeIn' src='assets/images/lumber.png'>`
     inventoryDisplay.innerHTML += `<tr><td>Lumber</td><td id="lumber-quantity" class='inventory-data'>${inventory.lumber}</td></tr>`
+    inventoryHide = false
   }
 }
 
@@ -66,6 +69,7 @@ function findMusket(){
   dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/musket.png'>`
   inventoryDisplay.innerHTML += `<td>Shot</td><td id='shot-quantity' class='inventory-data'>${inventory.shot}</td>`
   inventory.musket = true
+  inventoryHide = false
   updateState()
 }
 
@@ -81,6 +85,7 @@ function findSeeds (){
   dialogueImage.innerHTML = `<img class="animated fadeIn" src='assets/images/seeds.png'>`
   inventoryDisplay.innerHTML += `<tr><td >Seeds</td><td id='seed-quantity' class='inventory-data'>10</td></tr>`
   seedQuantity = document.querySelector('#seed-quantity')
+  inventoryHide = false
   inventory.seeds += 10
   updateState()
 }
@@ -89,6 +94,7 @@ function findTools(){
   dialogue.textContent = `You found some carpenty tools!`
   dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/carpentry.png'>`
   inventoryDisplay.innerHTML += `<tr><td>Tools</td><td>1</td></tr>`
+  inventoryHide = false
   inventory.carpentyTools = true
   shipItems.carpentyTools -= 1
   updateState();
@@ -150,6 +156,7 @@ function trees(){
   chop.addEventListener('click', function(){
     dialogue.textContent = `You got some lumber. +10 Lumber`
     dialogueImage.innerHTML = `<img src='assets/images/lumber.png'>`
+    inventoryHide = false
     inventory.lumber += 10
     updateInventory('lumber-quantity', 10)
     })
