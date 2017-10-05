@@ -6,7 +6,7 @@ function randomizer(){
 function corpses(){
   dialogue.textContent = `You found watery corpses and spoiled food.
   The ship has been slowly sinking for ${date.textContent}`
-  dialogueImage.innerHTML = `<img src="assets/images/sunken-pirate.jpg">`
+  dialogueImage.innerHTML = `<img class='animated shake' src="assets/images/sunken-pirate.jpg">`
 }
 
 function goatsEatFood(){
@@ -49,10 +49,9 @@ function wildBerries(){
 }
 
 function sinkShip(){
-  dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
+  dialogueImage.innerHTML = `<img class='animated fadeOutDown' src="assets/images/pirate-ship-sinking.jpg">`
   dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
   leftCol.firstElementChild.remove()
-  let temp = ''
 }
 
 function exploreShip(){
@@ -60,11 +59,13 @@ function exploreShip(){
   inventoryWrapper.style.display = 'block'
   shipItems.timesVisited += 1
   if(shipItems.timesVisited > 15){
-    sinkShip()
+    dialogueImage.innerHTML = `<img src="assets/images/pirate-ship-sinking.jpg">`
+    dialogue.textContent = `Unfortunately, the ship sank to the bottom of the ocean...`
+    window.setTimeout(sinkShip, 2000)
     islandState.shipStatus = false
   } else if(shipItems.timesVisited === 1){
     dialogue.textContent = `You found some seeds. +10 Seeds!`
-    dialogueImage.innerHTML = `<img src='assets/images/seeds.png'>`
+    dialogueImage.innerHTML = `<img class="animated fadeIn" src='assets/images/seeds.png'>`
     inventoryDisplay.innerHTML += `<tr><td >Seeds</td><td id='seed-quantity'>10</td></tr>`
     seedQuantity = document.querySelector('#seed-quantity')
     inventory.seeds += 10
@@ -72,7 +73,7 @@ function exploreShip(){
   } else if (success <= 10) {
     if(shipItems.food >= 60) {
       dialogue.textContent = `You found a barrel of potatoes. +10 Food!`
-      dialogueImage.innerHTML = `<img src='assets/images/potatoes.png'>`
+      dialogueImage.innerHTML = `<img class='animated flipInX' src='assets/images/potatoes.png'>`
       food += 5
       shipItems.food -=5
     } else {
@@ -81,7 +82,7 @@ function exploreShip(){
   } else if (success <= 20) {
     if(shipItems.food > 5) {
       dialogue.textContent = `You found a sack of biscuit. +5 Food!`
-      dialogueImage.innerHTML = `<img src='assets/images/biscuit.png'>`
+      dialogueImage.innerHTML = `<img class='animated flipInX' src='assets/images/biscuit.png'>`
       food += 5
       shipItems.food -=5
     } else {
@@ -89,12 +90,12 @@ function exploreShip(){
     }
   } else if (success <= 30) {
       dialogue.textContent = `You fell through some rotted wood and hurt your leg. -5 Health`
-      dialogueImage.innerHTML = `<img src='assets/images/hole.png'>`
+      dialogueImage.innerHTML = `<img class='animated bounce' src='assets/images/hole.png'>`
       health -= 5
   } else if (success <= 40) {
     if (shipItems.food > 5){
       dialogue.textContent = `You found a cask of ale. +5 Food!`
-      dialogueImage.innerHTML = `<img src='assets/images/cask.png'>`
+      dialogueImage.innerHTML = `<img class='animated tada' src='assets/images/cask.png'>`
       food += 5
       shipItems.food -= 5
     } else {
@@ -105,7 +106,7 @@ function exploreShip(){
       dialogue.textContent = `You found a hatchet!`
       inventory.hatchet = true
       inventoryDisplay.innerHTML += `<tr><td>Hatchet</td><td>1</td></tr>`
-      dialogueImage.innerHTML = `<img src='assets/images/axe.png'>`
+      dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/axe.png'>`
       updateState()
     } else {
       corpses()
@@ -113,7 +114,7 @@ function exploreShip(){
   } else if (success <= 60) {
     if (shipItems.carpentyTools > 0){
       dialogue.textContent = `You found some carpenty tools!`
-      dialogueImage.innerHTML = `<img src='assets/images/carpentry.png'>`
+      dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/carpentry.png'>`
       inventory.carpentyTools = true
       shipItems.carpentyTools -= 1
       updateState();
@@ -123,7 +124,7 @@ function exploreShip(){
   } else if (success <= 70) {
     if (shipItems.gold > 0){
       dialogue.textContent = `You found some gold doubloons! + 100 gold!`
-      dialogueImage.innerHTML = `<img src='assets/images/gold.png'>`
+      dialogueImage.innerHTML = `<img class='animated rubberBand' src='assets/images/gold.png'>`
       inventory.gold += 100
       shipItems.gold -= 100
       inventoryDisplay.innerHTML += `<td>Gold</td><td>${inventory.gold}</td>`
@@ -133,7 +134,7 @@ function exploreShip(){
   } else if (success <= 80) {
     if (shipItems.food > 5){
       dialogue.textContent = `You found some dried fruit! + 5 Food!`
-      dialogueImage.innerHTML = `<img src='assets/images/fruit.png'>`
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src='assets/images/fruit.png'>`
       food += 5
       shipItems.food -= 5
     } else {
@@ -145,7 +146,7 @@ function exploreShip(){
       shipItems.lumber -= 25
       if(inventory.lumber === 25){
         dialogue.textContent = `You found some wood! + 25 Lumber!`
-        dialogueImage.innerHTML = `<img src='assets/images/lumber.png'>`
+        dialogueImage.innerHTML = `<img class='animated flipInX' src='assets/images/lumber.png'>`
           inventoryDisplay.innerHTML += `<tr><td>Lumber</td><td id="lumberQuantity">${inventory.lumber}</td></tr>`
       lumber = document.querySelector('#lumberQuantity')
       }
@@ -157,7 +158,7 @@ function exploreShip(){
       inventoryDisplay.innerHTML += `<td>Musket</td><td>1</td>`
       inventory.shot += 10
       dialogue.textContent = `You found a musket and some shot!`
-      dialogueImage.innerHTML = `<img src='assets/images/musket.png'>`
+      dialogueImage.innerHTML = `<img class='animated flipInY' src='assets/images/musket.png'>`
       inventoryDisplay.innerHTML += `<td>Shot</td><td id='shotQuantity'>${inventory.shot}</td>`
       shotQuantity = document.querySelector('#shotQuantity')
       inventory.musket = true
@@ -228,7 +229,7 @@ function planting() {
   this.seeds = function(){
     if(inventory.seeds >= 10){
       dialogue.textContent = "You planted some seeds. I wonder if they will grow..."
-      dialogueImage.innerHTML = `<img src="assets/images/hand-seeds.png">`
+      dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/hand-seeds.png">`
       seedQuantity.innerHTML = Number(seedQuantity.innerHTML) - 10
       inventory.seeds -= 10
       seedMonth = currentMonth
@@ -247,6 +248,9 @@ function planting() {
     }
 
     if(month === 7){
+      food += 30
+      dialogue.textContent = "Your seeds grew into plants..."
+      dialogueImage.innerHTML = `<img src="assets/images/dirt.jpg">`
       console.log('planted in feb')
     } else if (month === (8||9)){
       console.log('planted in march or april')
@@ -272,14 +276,6 @@ function fortress() {
     dialogue.textContent = "You improved your fort"
     dialogueImage.innerHTML = `<img src='assets/images/stick-fort.jpg'>`
   };
-}
-
-function sprout(){
-  if(currentMonth === 1){
-    console.log('sprout! sprout! sprout!')
-  } else {
-    console.log('sorry charley!')
-  }
 }
 
 
