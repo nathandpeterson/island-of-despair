@@ -1,23 +1,18 @@
 'use strict'
 
 let gameTimer = window.setInterval(islandTimer,1000)
-let healthID
-let justDays
-let currentMonth
+let healthID, justDays, currentMonth
 let islandTimerStatus = false
 
 function islandTimer(){
   let time = 0
-  let interval
-  let offset
-  let date
+  let interval, offset, date
 
   function update(){
     time += delta()
     let formattedTime = timeFormatter(time)
     dateDisplay.textContent = formattedTime
     monthDisplay.innerHTML = `<h3>The month is ${monthFormatter(currentMonth)}</h3>`
-    // eventGenerator(time)
   }
 
   function delta(){

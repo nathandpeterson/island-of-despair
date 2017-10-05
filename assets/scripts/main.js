@@ -17,7 +17,6 @@ let inventory = {
 
 let islandState = {
   goats: 10 + Math.ceil(randomizer()/10),
-  fort : false,
   fortStrength : 0,
   shipStatus: true,
   hunting: false,
@@ -49,19 +48,19 @@ function updateInventory(row, num){
 }
 
 function updateState(){
-  if (inventory.carpentyTools === true && islandState.fort === false) {
+  if (inventory.carpentyTools === true && islandState.fortStrength === 0) {
   let temp = document.createElement(`div`)
   temp.className = 'build-fort action animated fadeIn'
+  temp.id = 'fort-button'
   temp.innerHTML = `<p>Build a Fort</p>`
   rightCol.append(temp)
   temp.addEventListener('click', function(){
     fort.build()
-  })
-  islandState.fort = `true`
+    })
   }
-  if (islandState.fort === true && inventory.lumber >= 100){
+  if (islandState.fortStrength === 100 && inventory.lumber >= 100){
     let temp = document.createElement('div')
-    temp.className = 'build-fort action animated fadeIn'
+    temp.className = 'improve-fort action animated fadeIn'
     temp.innerHTML = `<p>Improve your Fort</p>`
     rightCol.append(temp)
     temp.addEventListener('click', function(){

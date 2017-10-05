@@ -1,4 +1,4 @@
-'use script'
+'use strict'
 
 function corpses(){
   dialogue.textContent = `You found watery corpses and spoiled food.

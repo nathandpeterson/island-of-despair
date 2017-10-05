@@ -1,8 +1,8 @@
 'use strict'
+
 function randomizer(){
   return Math.ceil(Math.random() * 100)
 }
-
 
 function exploreShip(){
   let success = randomizer()
@@ -165,18 +165,20 @@ function planting() {
 
 function fortress() {
   this.build = function build(){
+    dialogue.textContent = "You built a fort, but you might want to try and improve it."
+    dialogueImage.innerHTML = `<img src='assets/images/stick-fort.jpg'>`
+    islandState.fortStrength = 100
+    let removeButton = document.querySelector('#fort-button')
+    removeButton.remove()
     inventory.lumber -= 100
     updateInventory('lumber-quantity', -100)
-    dialogue.textContent = "You built a fort, but you might want to fortify it."
-    dialogueImage.innerHTML = `<img src='assets/images/stick-fort.jpg'>`
-    islandState.fort = true
-    updateState()
   };
   this.improve = function fortify(){
     inventory.lumber -= 100;
-    inventory.fortStrength += 10;
+    updateInventory('lumber-quantity', -100)
+    inventory.fortStrength = 200;
     dialogue.textContent = "You improved your fort"
-    dialogueImage.innerHTML = `<img src='assets/images/stick-fort.jpg'>`
+    dialogueImage.innerHTML = `<img src='assets/images/fortress.png'>`
   };
 }
 
