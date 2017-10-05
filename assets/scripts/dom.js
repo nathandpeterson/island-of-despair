@@ -84,12 +84,12 @@ brand.addEventListener('click', function(){
 })
 
 for (let i = 0; i < actionBtns.length; i++){
-  actionBtns[i].addEventListener('click', function(e){
-    if(e.target.classList.contains('scavange-ship')) {
-      exploreShip();
-    }
-    if(e.target.classList.contains('explore-island')){
-      exploreIsland();
-    }
-  })
-}
+    actionBtns[i].addEventListener('click', function(e){
+      if(e.target.classList.contains('scavange-ship')) {
+        exploreShip();
+      }
+      if(e.target.classList.contains('explore-island')){
+        exploreIsland();
+      }
+    })
+  }

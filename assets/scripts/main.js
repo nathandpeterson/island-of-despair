@@ -4,6 +4,7 @@ let health = 25
 let food = 10
 
 let inventory = {
+  alive: true,
   clothing: false,
   musket: false,
   carpentyTools: false,
@@ -34,7 +35,20 @@ let shipItems = {
   timesVisited: 0
 }
 
-let updateState = function(){
+function updateInventory(row, num){
+  const inventoryData = document.querySelectorAll('.inventory-data')
+  for(let i=0; i < inventoryData.length; i++){
+    let item = inventoryData[i]
+    if(row === item.id){
+      let temp = Number(item.textContent)
+      temp += num
+      item.textContent = temp
+    }
+  }
+  updateState()
+}
+
+function updateState(){
   if (inventory.carpentyTools === true && islandState.fort === false) {
   let temp = document.createElement(`div`)
   temp.className = 'build-fort action animated fadeIn'
@@ -45,7 +59,8 @@ let updateState = function(){
   })
   islandState.fort = `true`
   }
-  if (islandState.fort === true && inventory.lumber > 25){
+  if (islandState.fort === true && inventory.lumber >= 100){
+    let temp = document.createElement('div')
     temp.className = 'build-fort action animated fadeIn'
     temp.innerHTML = `<p>Improve your Fort</p>`
     rightCol.append(temp)

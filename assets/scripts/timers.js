@@ -6,12 +6,6 @@ let justDays
 let currentMonth
 let islandTimerStatus = false
 
-function eventGenerator(currentMilliseconds){
-  if(currentMilliseconds > 150000 && islandState.shipStatus === false){
-    //something here
-  }
-}
-
 function islandTimer(){
   let time = 0
   let interval
@@ -23,7 +17,7 @@ function islandTimer(){
     let formattedTime = timeFormatter(time)
     dateDisplay.textContent = formattedTime
     monthDisplay.innerHTML = `<h3>The month is ${monthFormatter(currentMonth)}</h3>`
-    eventGenerator(time)
+    // eventGenerator(time)
   }
 
   function delta(){
@@ -86,7 +80,7 @@ function islandTimer(){
 
 function healthTime(){
   if(islandTimerStatus === true){
-    if(food){
+    if(food > 0){
       food -= 1
       foodDisplay.textContent = " " + food;
       foodDisplay.style.color = 'white'
@@ -95,8 +89,12 @@ function healthTime(){
         health += 1
       }
       healthDisplay.textContent = " : " + health;
+    } else if (food < 0) {
+      food = 0
+      foodDisplay.textContent = " " + food;
+      foodDisplay.style.color = 'white'
     } else {
-      health = health - 1;
+      health -= 1;
       healthDisplay.textContent = " : " + health;
       progressBar.style.width = (health/25 * 100) + '%';
     }
@@ -123,6 +121,8 @@ function gameOver(){
   localStorage.setItem('last-game', justDays)
   clearInterval(healthID)
   timer.pause()
+  inventory.alive = false
+  updateState()
 }
 
 function monthFormatter(monthNumber){
