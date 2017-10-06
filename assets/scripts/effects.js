@@ -224,4 +224,5 @@ function wildBerries(){
 function winGame(){
   dialogue.textContent = `You killed the pirates and stole their ship! Now you can sail back home with all your loot. You have ${inventory.gold} gold doubloons!`
   dialogueImage.innerHTML = `<img src="assets/images/winner.png">`
+  timer.pause()
 }

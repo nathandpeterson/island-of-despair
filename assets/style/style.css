@@ -38,7 +38,7 @@ body {
 }
 
 .status-dialogue h4, #month-display {
-  display: none;
+  /*display: none;*/
 }
 
 .time-status {
@@ -75,9 +75,6 @@ body {
   margin-top: .75rem;
 }
 
-#inventory-icon {
-  margin-top: 2rem;
-}
 
 .inventory-wrapper {
   margin-top: 1rem;

@@ -198,7 +198,7 @@ function fortress() {
   this.build = function build(){
     dialogue.textContent = "You built a fort, but you might want to try and improve it."
     dialogueImage.innerHTML = `<img src='assets/images/stick-fort.jpg'>`
-    islandState.fortStrength = 100
+    islandState.fortStrength += 100
     let removeButton = document.querySelector('#fort-button')
     removeButton.remove()
     inventory.lumber -= 100
@@ -207,7 +207,7 @@ function fortress() {
   this.improve = function fortify(){
     inventory.lumber -= 100;
     updateInventory('lumber-quantity', -100)
-    inventory.fortStrength = 200;
+    islandState.fortStrength += 100;
     dialogue.textContent = "You improved your fort"
     dialogueImage.innerHTML = `<img src='assets/images/fortress.png'>`
   };
