@@ -1,0 +1,26 @@
+{
+  "name": "q1project",
+  "version": "1.0.0",
+  "description": "A fast-paced survival game based on the plot of Daniel Defoe's Robinson Crusoe.",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathandpeterson/island-of-despair.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathandpeterson/island-of-despair/issues"
+  },
+  "homepage": "https://github.com/nathandpeterson/island-of-despair#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

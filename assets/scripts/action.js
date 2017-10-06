@@ -84,7 +84,7 @@ function exploreIsland(){
   } else if (success <= 70){
     goatsEatFood()
   } else if (success <= 100){
-    wildBerries()
+    trees()
   }
 }
 
