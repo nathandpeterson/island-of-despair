@@ -86,26 +86,6 @@ brand.addEventListener('click', function(){
   }
 })
 
-// Toggle status on hover (doesn't look good)
-// statusIcon.addEventListener('mouseenter', function(e){
-//   e.target.nextElementSibling.style.display = 'block'
-//   e.target.style.color = 'white'
-// })
-// statusIcon.addEventListener('mouseleave', function(e){
-//   e.target.nextElementSibling.style.display = 'none'
-//   e.target.style.color = 'rgba(245,245,245, .7)'
-// })
-//
-// Toggle status on hover(doesn't look good)
-// monthIcon.addEventListener('mouseenter', function(e){
-//   monthDisplay.style.display = 'block'
-//   e.target.style.color = 'white'
-// })
-// monthIcon.addEventListener('mouseleave', function(e){
-//   e.target.nextElementSibling.style.display = 'none'
-//   e.target.style.color = 'rgba(245,245,245, .7)'
-// })
-
 inventoryIcon.addEventListener('click', function(e){
   if(inventoryHide === true){
     inventoryWrapper.style.display = 'block'

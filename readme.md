@@ -1,4 +1,4 @@
-#The Island of Despair
+# The Island of Despair
 
 A fast-paced survival game based on the plot of Daniel Defoe's Robinson Crusoe.
 
@@ -8,7 +8,7 @@ The Island of Despair can be used by teachers to engage students in Defoe's nove
 * Keep track of your highest score with browser-based local storage.
 * Uses game-based pedagogy to complement reading Defoe's novel.
 
-![](screenshot.png)
+![](screen-shot.png)
 > [Demo Here](http://ndpeterson-island-of-despair.surge.sh/)
 
 ## Installation
