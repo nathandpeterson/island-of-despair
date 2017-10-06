@@ -30,7 +30,7 @@ function islandTimer(){
     let years = Math.floor(milliseconds/365000)
     if (years > 0){
       months = months - (years*12)
-      days = days - (months*31)
+      days = days - (days*365)
       date = `${years} years ${months} months ${days} days `
     } else if (months === 1 ) {
       days = days - (months*31)

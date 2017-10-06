@@ -84,7 +84,7 @@ function exploreIsland(){
   } else if (success <= 70){
     goatsEatFood()
   } else if (success <= 100){
-    nothing()
+    wildBerries()
   }
 }
 
@@ -97,14 +97,14 @@ function exploreSeashore(){
   } else if (success <= 30){
     shoreBoats()
   } else if (success <= 50) {
-    nothing()
+    ramble()
   } else if (success <= 70){
-    goatsEatFood()
+    spider()
   } else if (success <= 100){
     if(currentMonth > 12){
       piratesArrive()
     } else {
-      nothing()
+      shoreSeeds()
     }
   }
 }
@@ -189,7 +189,7 @@ function planting() {
       updateInventory('seed-quantity', 20)
     } else {
       dialogue.textContent = "You planted in the wrong season. Your seeds never grew..."
-      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/dirt.png">`
+      dialogueImage.innerHTML = `<img class='animated fadeIn' src="assets/images/dirt.jpg">`
     }
   };
 }

@@ -107,14 +107,57 @@ function goatsEatFood(){
 }
 
 function nothing(){
-  dialogue.textContent = `The island seems far more forbidding than when you first arrived...`
+  dialogue.textContent = `The island seems more sinister than you first thought.`
   dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/rocky.png">`
+}
+
+function piratesArrive(){
+  dialogue.textContent = `You found some pirates on the beach!`
+  dialogueImage.innerHTML = `<img class="animated tada" src="assets/images/pirates-with-treasure.png">`
+  if(inventory.shot > 0){
+    dialogue.innerHTML += `<h3>Want to take a shot?</h3>
+    <button class="btn btn-secondary btn-lg btn-block" id="shoot">SHOOT</button>`
+  shoot = document.querySelector('#shoot')
+  shoot.addEventListener('click', function(){
+    piratesShot()
+    })
+      } else {
+  dialogue.textContent += `Too bad you're out of shot!`
+      }
+}
+function piratesShot(){
+  inventory.shot -= 1
+  updateInventory('shot-quantity', -1)
+  dialogue.textContent = `You hit a pirate and the remaining pirates chased you back to your fort.`
+  if(islandState.fortStrength >= 200){
+    dialogueImage.innerHTML = `<img class="animated tada" src="assets/images/fortress.png">`
+    dialogue.textContent += ` Good thing you improved your fort.`
+    if(inventory.shot > 0){
+      dialogue.textContent += `Do you want to take another shot?`
+      dialogue.innerHTML += `<button class="btn btn-secondary btn-lg btn-block" id="shoot">SHOOT</button>`
+      shoot = document.querySelector('#shoot')
+      shoot.addEventListener('click', function(){
+        inventory.shot -= 1
+        updateInventory('shot-quantity', -1)
+        winGame()
+    })
+  }
+  } else {
+    dialogue.textContent = `The pirates broke down the walls of your fort and killed you!`
+    dialogueImage.innerHTML = `<img class="animated tada" src="assets/images/pirate-death.png">`
+    window.setTimeout(gameOver, 3000)
+  }
 }
 
 function rain() {
   dialogue.textContent = `You got rained on and caught a bad cold. -5 Health`
   dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/rain.png">`
   health -= 5
+}
+
+function ramble(){
+  dialogue.textContent = `Your memories of home are hazy and faded...`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/mist.png">`
 }
 
 function shoreBoats(){
@@ -131,20 +174,28 @@ function shoreFood(){
 function shoreGold(){
   dialogue.textContent = `You found some gold coins on the beach! I hope nobody comes looking for them. +100 Gold`
   dialogueImage.innerHTML = `<img src="assets/images/beach-gold.png">`
-  inventory.gold += 50
-  updateInventory('gold-quantity', 50)
+  inventory.gold += 100
+  updateInventory('gold-quantity', 100)
+}
+
+function shoreSeeds(){
+  dialogue.textContent = `You found some kind of seeds on the beach! I wonder what they are... +10 Seeds`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/seeds.png">`
+  inventory.seeds += 10
+  updateInventory('seed-quantity', 10)
 }
 
 function sinkShip(){
-  function removeShip(){
-    leftCol.firstElementChild.remove()
-    islandState.shipStatus = false
-  }
-  if(islandState.shipStatus === true){
     dialogueImage.innerHTML = `<img class='animated fadeOutDown' src="assets/images/pirate-ship-sinking.jpg">`
     dialogue.textContent = `Sadly, the ship sank to the bottom of the ocean...`
-    window.setTimeout(removeShip, 2000)
-  }
+    leftCol.firstElementChild.remove()
+    islandState.shipStatus = false
+}
+
+function spider(){
+  dialogue.textContent = `Ouch! You got bit by a spider! -3 Health`
+  dialogueImage.innerHTML = `<img class="animated fadeIn" src="assets/images/spider.png">`
+  health -= 3
 }
 
 function trees(){
@@ -168,4 +219,9 @@ function wildBerries(){
   dialogue.textContent = `You found some wild berries! +5 FOOD!`
   dialogueImage.innerHTML = `<img src="assets/images/berries.png">`
   food += 5
+}
+
+function winGame(){
+  dialogue.textContent = `You killed the pirates and stole their ship! Now you can sail back home with all your loot. You have ${inventory.gold} gold doubloons!`
+  dialogueImage.innerHTML = `<img src="assets/images/winner.png">`
 }

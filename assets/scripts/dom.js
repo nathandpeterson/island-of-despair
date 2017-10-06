@@ -25,7 +25,7 @@ let statusIcon = document.querySelector('#status-icon')
 let tray = document.querySelector('.central-tray')
 let userInputName = document.querySelector('#userName')
 let userSubmitButton = document.querySelector('#userName-submit')
-let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity, fortButton
+let lumber,returningUser, seedTimer, seedMonth, seedQuantity, shotQuantity, fortButton, shoot
 
 document.addEventListener('DOMContentLoaded', function(e){
   returningUser = localStorage.getItem('name' || null)
