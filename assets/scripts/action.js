@@ -213,7 +213,6 @@ function fortress() {
   };
 }
 
-
 let find = new findFood()
 let plant = new planting()
 let fort = new fortress()

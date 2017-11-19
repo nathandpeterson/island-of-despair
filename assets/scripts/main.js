@@ -91,4 +91,10 @@ function updateState(){
       plant.seeds()
     })
   }
+  if(!inventory.alive){
+    let buttons = document.querySelectorAll('.action')
+    for(let i = 0; i < buttons.length; i++){
+      buttons[i].style.display = 'none'
+    }
+  }
 }

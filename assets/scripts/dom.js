@@ -65,13 +65,6 @@ userSubmitButton.addEventListener('click', function(){
   welcomeMessage(userInputName.value)
   timer.start()
   healthID = window.setInterval(healthTime, 1000)
-
-  // bigMessage.textContent = ''
-  // let temp = document.createElement(`div`)
-  // temp.className = 'animated fadeInLeftBig'
-  // temp.innerHTML = `<p>Please enter a name. <br> (It doesn't have to be your <em>real</em> name...)</p>`
-  // bigMessage.append(temp)
-
 })
 
 brand.addEventListener('click', function(){
@@ -96,16 +89,15 @@ inventoryIcon.addEventListener('click', function(e){
     e.target.style.color = 'rgba(245,245,245, .7)'
     inventoryHide = true
   }
-
 })
 
 for (let i = 0; i < actionBtns.length; i++){
     actionBtns[i].addEventListener('click', function(e){
       if(e.target.classList.contains('scavange-ship')) {
-        exploreShip();
+        exploreShip()
       }
       if(e.target.classList.contains('explore-island')){
-        exploreIsland();
+        exploreIsland()
       }
       if(e.target.classList.contains('explore-seashore')){
         exploreSeashore()
