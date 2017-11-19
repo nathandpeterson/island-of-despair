@@ -112,7 +112,8 @@ function healthTime(){
 function gameOver(){
   dialogueImage.innerHTML = '<img src ="assets/images/skeleton.jpg"> '
   dialogue.textContent = 'You perished...'
-  localStorage.setItem('max-days', justDays)
+  let maxDays = localStorage.getItem('max-days')
+  if(justDays > maxDays) localStorage.setItem('max-days', justDays)
   localStorage.setItem('last-game', justDays)
   clearInterval(healthID)
   timer.pause()

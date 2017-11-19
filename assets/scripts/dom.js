@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function(e){
   if(returningUser){
     let max = localStorage.getItem('max-days')
     let last = localStorage.getItem('last-game')
-    bigMessage.innerHTML = `<p>Welcome back, ${returningUser}!</p>
+    bigMessage.innerHTML = `<p>Welcome back to the Island of Despair, ${returningUser}!</p>
     <p>Last time you survived for ${last} days!</p>
     <p>The longest you have survived is ${max} days!
     Can you survive longer?</p>`
@@ -57,7 +57,8 @@ function clearMain(){
 }
 
 userSubmitButton.addEventListener('click', function(){
-  localStorage.setItem('name', userInputName.value)
+  let name = localStorage.getItem('name')
+  if(!name) localStorage.setItem('name', userInputName.value)
   mainDialogue.style.display = 'none'
   userSubmitButton.style.display = 'none'
   userInputName.style.display = 'none'

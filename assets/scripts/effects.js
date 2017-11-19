@@ -104,6 +104,7 @@ function goatsEatFood(){
   dialogue.textContent = `While you were out exploring the island, goats came and ate some of your provisions. -5 Food`
   dialogueImage.innerHTML = `<img src="assets/images/happyGoat.png">`
   food -= 5
+  if (food <= 0) nothing()
 }
 
 function nothing(){

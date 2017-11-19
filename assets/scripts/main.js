@@ -96,5 +96,20 @@ function updateState(){
     for(let i = 0; i < buttons.length; i++){
       buttons[i].style.display = 'none'
     }
+    playAgain()
   }
+}
+
+function playAgain(){
+  let dialogue = document.querySelector('.dialogue')
+  dialogue.innerHTML = playAgainButton()
+  let play = document.querySelector('.play-again')
+  play.addEventListener('click', (e) => {
+    e.preventDefault()
+    location.reload()
+  })
+}
+
+function playAgainButton(){
+  return `<div class="play-again btn-secondary btn-lg btn-block"> <h1>Play Again?</h1> </div>`
 }
